@@ -1183,7 +1183,6 @@
   .toc-bar{ top:46px; }
 
 </style>
-
 <style>
   /* GLOBAL OVERRIDES FOR LEARNING */
   body { font-size: 16px !important; }
@@ -1195,16 +1194,42 @@
   .out-card .num { font-size: 16px !important; padding: 3px 8px !important; }
   .out-card code { font-size: 14px !important; }
 </style>
-</head>
 
+<style>
+  body.light-mode {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --card-2: #f1f5f9;
+    --ui: #e2e8f0;
+    --ui-2: #cbd5e1;
+    --border: #e2e8f0;
+    --border-2: #cbd5e1;
+    --text: #0f172a;
+    --muted: #475569;
+    --dim: #64748b;
+    --faint: #94a3b8;
+    --claude-glow: rgba(255, 107, 53, 0.1);
+  }
+  body.light-mode #theme-toggle {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+</style>
+</head>
 <body>
+<div id="theme-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1000; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+<svg class="sun-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px; color: #fbbf24; position: absolute; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: rotate(-90deg) scale(0);" viewbox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+<svg class="moon-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width: 24px; height: 24px; color: #a1a1aa; position: absolute; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; transform: rotate(0) scale(1);" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</div>
+
 <!-- cross-site toggle -->
 <div class="wrap">
 <!-- HERO -->
 <!-- STICKY TOC -->
 <div style="text-align:center; padding: 60px 20px 20px; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 10;">
 <div class="hero-logo" style="width: 88px; height: 88px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 24px;">
-<img alt="Logo" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&amp;w=200&amp;h=200&amp;fit=crop" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+<img alt="Logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
 </div>
 <h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 900; letter-spacing: -0.04em; color: var(--text);">Jak zacząć z Antigravity</h1>
 </div>
@@ -1608,6 +1633,44 @@
     if (window.scrollY > 600) backTop.classList.add('visible');
     else backTop.classList.remove('visible');
   });
+</script>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const sunIcon = toggle.querySelector('.sun-icon');
+  const moonIcon = toggle.querySelector('.moon-icon');
+  
+  function setTheme(isLight) {
+    if (isLight) {
+      document.body.classList.add('light-mode');
+      sunIcon.style.opacity = '1';
+      sunIcon.style.transform = 'rotate(0) scale(1)';
+      moonIcon.style.opacity = '0';
+      moonIcon.style.transform = 'rotate(90deg) scale(0)';
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.body.classList.remove('light-mode');
+      sunIcon.style.opacity = '0';
+      sunIcon.style.transform = 'rotate(-90deg) scale(0)';
+      moonIcon.style.opacity = '1';
+      moonIcon.style.transform = 'rotate(0) scale(1)';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  // Init
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    setTheme(true);
+  }
+
+  toggle.addEventListener('click', () => {
+    const isLight = document.body.classList.contains('light-mode');
+    setTheme(!isLight);
+  });
+  
+  toggle.addEventListener('mouseenter', () => toggle.style.transform = 'scale(1.1)');
+  toggle.addEventListener('mouseleave', () => toggle.style.transform = 'scale(1)');
 </script>
 </body>
 </html>
