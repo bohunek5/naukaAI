@@ -1200,7 +1200,7 @@
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 24px;
-    width: 100%; max-width: 680px;
+    width: 100%; max-width: 760px;
     max-height: 90vh; overflow-y: auto;
     box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
     transform: translateY(20px) scale(0.98);
@@ -1581,8 +1581,8 @@
     { name: "Supabase",    slug: "supabase",           color: "3FCF8E" },
     { name: "Stripe",      slug: "stripe",             color: "635BFF" },
     { name: "GitHub",      slug: "github",             color: "white"  },
-    { name: "Pinecone",    emoji: "🌲" },
-    { name: "NotebookLM",  emoji: "📔" },
+    { name: "Pinecone",    domain: "pinecone.io" },
+    { name: "NotebookLM",  domain: "notebooklm.google.com" },
     { name: "Gmail",       slug: "gmail",              color: "EA4335" },
     { name: "Notion",      slug: "notion",             color: "white"  },
     { name: "Figma",       slug: "figma",              color: "F24E1E" },
@@ -1590,11 +1590,11 @@
     { name: "Spline",      slug: "spline",             color: "white"  },
     { name: "ElevenLabs",  slug: "elevenlabs",         color: "white"  },
     { name: "Nano Banana", emoji: "🍌" },
-    { name: "Higgsfield",  emoji: "🎬" },
-    { name: "Firecrawl",   emoji: "🔥" },
-    { name: "GoHighLevel", emoji: "🎯" },
-    { name: "Instantly",   emoji: "⚡" },
-    { name: "Granola",     emoji: "🎙" },
+    { name: "Higgsfield",  domain: "higgsfield.ai" },
+    { name: "Firecrawl",   domain: "firecrawl.dev" },
+    { name: "GoHighLevel", domain: "gohighlevel.com" },
+    { name: "Instantly",   domain: "instantly.ai" },
+    { name: "Granola",     domain: "granola.so" },
     { name: "Bitwarden",   slug: "bitwarden",          color: "175DDC" },
     { name: "n8n",         slug: "n8n",                color: "EA4B71" },
     { name: "LinkedIn",    slug: "linkedin",           color: "0A66C2" },
@@ -1614,6 +1614,7 @@
   function chip(b) {
     if (b.emoji) return `<span class="brand-chip"><span class="em">${b.emoji}</span>${b.name}</span>`;
     if (b.local) return `<span class="brand-chip"><img src="${b.local}" alt="${b.name}" loading="lazy" />${b.name}</span>`;
+    if (b.domain) return `<span class="brand-chip"><img src="https://www.google.com/s2/favicons?domain=${b.domain}&sz=128" alt="${b.name}" loading="lazy" />${b.name}</span>`;
     return `<span class="brand-chip"><img src="https://cdn.simpleicons.org/${b.slug}/${b.color}" alt="${b.name}" loading="lazy" />${b.name}</span>`;
   }
   const m = document.getElementById('marquee');
@@ -1803,6 +1804,11 @@
     </div>
     <div class="t-modal-body">
       <div class="t-modal-section">
+        <h3 style="margin-bottom: 12px; font-size: 18px;">Co będziemy robić i dlaczego?</h3>
+        <p id="modalDesc" style="color: var(--text); font-size: 15px; line-height: 1.7; padding: 18px 24px; background: rgba(120, 120, 120, 0.05); border-left: 4px solid var(--claude); border-radius: 0 12px 12px 0; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+        </p>
+      </div>
+      <div class="t-modal-section">
         <h3>Plan Działania</h3>
         <p>Szczegółowy proces krok po kroku przygotowany specjalnie dla tej lekcji. Agent poprowadzi Cię przez następujące etapy, gwarantując maksymalne przyswojenie wiedzy.</p>
         <div style="margin-top:24px; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
@@ -1832,6 +1838,11 @@
   function openModal(num, title, items) {
     modalTag.textContent = "Lekcja " + num;
     modalTitle.textContent = title;
+    
+    const descEl = document.getElementById('modalDesc');
+    if (descEl) {
+      descEl.innerHTML = `W tej lekcji skupimy się na zagadnieniu <strong>${title}</strong>. Pokażę Ci dokładnie, co musimy zrobić krok po kroku i dlaczego jest to absolutnie kluczowe dla Twojego sukcesu. Dzięki temu zaoszczędzisz mnóstwo czasu i unikniesz typowych błędów, od razu wdrażając najlepsze praktyki w swoim środowisku pracy.`;
+    }
     
     modalList.innerHTML = '';
     items.forEach((item, idx) => {

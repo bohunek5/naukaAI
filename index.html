@@ -91,6 +91,14 @@
     background: #a855f7;
     color: white;
   }
+
+      .card-claude img {
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
+      body.light-mode .card-claude img {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
 </style>
 
 <style>
@@ -109,9 +117,36 @@
       body { background-color: var(--bg); color: var(--text); transition: background-color 0.3s, color 0.3s; }
       .card { background-color: var(--card); border-color: var(--border); color: var(--text); transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.2s; }
       
-      /* Force 1 line for cards */
-      .cards { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; justify-content: center; gap: 30px; overflow-x: auto; padding-bottom: 20px; }
-      .card { min-width: 280px; flex: 1; max-width: 320px; }
+      /* Desktop: cards in a horizontal row */
+  .cards {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center;
+    gap: 30px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+  .card {
+    min-width: 280px;
+    flex: 1;
+    max-width: 320px;
+  }
+
+  /* Mobile: stack cards vertically, max 3 per screen */
+  @media (max-width: 640px) {
+    .cards {
+      flex-direction: column !important;
+      flex-wrap: wrap !important;
+      overflow-x: visible;
+      gap: 24px;
+      align-items: center;
+    }
+    .card {
+      max-width: 90%;
+      min-width: auto;
+    }
+  }
       
       /* Brand colors for buttons */
       .card-claude .btn { background: #D97757 !important; color: white !important; }
