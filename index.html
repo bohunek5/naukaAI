@@ -29,11 +29,7 @@
     margin-bottom: 40px;
     letter-spacing: -0.04em;
   }
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-  }
+  /* cards layout handled below */
   .card {
     background-color: #0f1119;
     border: 1px solid #242838;
@@ -45,6 +41,7 @@
     text-decoration: none;
     color: white;
     transition: transform 0.2s, border-color 0.2s;
+    width: 100%;
   }
   .card:hover {
     
@@ -117,34 +114,29 @@
       body { background-color: var(--bg); color: var(--text); transition: background-color 0.3s, color 0.3s; }
       .card { background-color: var(--card); border-color: var(--border); color: var(--text); transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.2s; }
       
-      /* Desktop: cards in a horizontal row */
+      /* Desktop: 3 cards side by side */
   .cards {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    overflow-x: auto;
-    padding-bottom: 20px;
+    justify-content: center;
+    width: 100%;
   }
+  
   .card {
-    min-width: 280px;
-    flex: 1;
-    max-width: 320px;
+    max-width: 100%;
   }
 
-  /* Mobile: stack cards vertically, max 3 per screen */
-  @media (max-width: 640px) {
+  /* Tablet and Mobile: stack cards vertically */
+  @media (max-width: 900px) {
     .cards {
-      flex-direction: column !important;
-      flex-wrap: wrap !important;
-      overflow-x: visible;
+      grid-template-columns: 1fr;
       gap: 24px;
-      align-items: center;
+      padding: 0 10px;
     }
     .card {
-      max-width: 90%;
-      min-width: auto;
+      max-width: 400px;
+      margin: 0 auto; /* Center the cards */
     }
   }
       
