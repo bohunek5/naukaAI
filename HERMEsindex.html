@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hermes Agent MASTERCLASS (Operate &amp; Sell) — The Curriculum</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #070810;
+    --card: #0f1119;
+    --card-2: #131623;
+    --ui: #171a27;
+    --ui-2: #1b1e2c;
+    --border: #242838;
+    --border-2: #2e3244;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --dim: #6b7280;
+    --faint: #4b5563;
+    --claude: #2845ff;        /* Hermes electric blue */
+    --claude-2: #6d84ff;
+    --claude-glow: rgba(40, 69, 255, 0.35);
+
+    /* Per-part color tokens — cool Hermes spectrum, one gold payoff for "Sell" */
+    --p1: #818cf8;  /* indigo   — Foundations */
+    --p2: #38bdf8;  /* sky      — The Brain */
+    --p3: #22d3ee;  /* cyan     — Memory */
+    --p4: #2dd4bf;  /* teal     — Connectors */
+    --p5: #a78bfa;  /* violet   — Orchestration */
+    --p6: #4ade80;  /* green    — Guardrails */
+    --p7: #60a5fa;  /* blue     — Deployment */
+    --p8: #5e7bff;  /* periwinkle — Outputs */
+    --p9: #818cf8;  /* indigo   — Reliability */
+    --p10: #facc15; /* gold     — Sell */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: overlay;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(900px at 15% 5%, rgba(40, 69, 255, 0.10), transparent 60%),
+      radial-gradient(700px at 85% 80%, rgba(96, 165, 250, 0.07), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+  @keyframes breathe { 0%,100%{transform:scale(1);} 50%{transform:scale(1.025);filter:brightness(1.1);} }
+  @keyframes shimmerText { 0%{background-position:0%50%;} 100%{background-position:200%50%;} }
+  @keyframes scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* Wrap */
+  .wrap { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 32px 100px; }
+
+  /* HERO */
+  .hero { text-align: center; margin-bottom: 32px; animation: fadeInUp 0.9s ease-out; }
+  .hero-logo {
+    width: 88px; height: 88px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .hero-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .hero-mark {
+    width: min(480px, 80vw);
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    display: block;
+    margin: 22px auto 4px;
+    box-shadow: 0 0 60px rgba(40, 69, 255, 0.25), 0 14px 36px rgba(0,0,0,0.35),
+                inset 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .hero-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-mark svg { width: 52px; height: 52px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+
+  .hero-title {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    margin-bottom: 14px;
+  }
+  .hero-title .top {
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--text);
+  }
+  .hero-title .main {
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 900; letter-spacing: -0.04em; line-height: 0.95;
+    background: linear-gradient(135deg, var(--claude-2), #aebfff, var(--claude));
+    background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    animation: shimmerText 5s linear infinite;
+    white-space: nowrap;
+  }
+  .hero-title .sub {
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-style: italic; color: var(--muted); margin-top: 6px;
+  }
+  .hero-meta {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 10px 18px; background: rgba(40, 69, 255, 0.06);
+    border: 1px solid rgba(40, 69, 255, 0.22); border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-weight: 600; letter-spacing: 0.1em; color: var(--claude-2);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .hero-meta strong { color: var(--text); }
+
+  /* TOC sticky nav */
+  .toc-bar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(7, 8, 16, 0.85);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 24px -32px 48px;
+    padding: 14px 32px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-bar::-webkit-scrollbar { display: none; }
+  .toc-inner {
+    display: flex; align-items: center; gap: 8px;
+    max-width: 1200px; margin: 0 auto;
+    white-space: nowrap;
+  }
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    font-weight: 700; letter-spacing: 0.18em; color: var(--dim);
+    text-transform: uppercase; margin-right: 14px; flex-shrink: 0;
+  }
+  .toc-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px;
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .toc-chip:hover {
+    color: var(--text); border-color: var(--border-2); transform: translateY(-1px);
+  }
+  .toc-chip .chip-num {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    color: var(--accent, var(--claude));
+  }
+  .toc-chip[data-c="1"]  { --accent: var(--p1); }
+  .toc-chip[data-c="2"]  { --accent: var(--p2); }
+  .toc-chip[data-c="3"]  { --accent: var(--p3); }
+  .toc-chip[data-c="4"]  { --accent: var(--p4); }
+  .toc-chip[data-c="5"]  { --accent: var(--p5); }
+  .toc-chip[data-c="6"]  { --accent: var(--p6); }
+  .toc-chip[data-c="7"]  { --accent: var(--p7); }
+  .toc-chip[data-c="8"]  { --accent: var(--p8); }
+  .toc-chip[data-c="9"]  { --accent: var(--p9); }
+  .toc-chip[data-c="10"] { --accent: var(--p10); }
+
+  /* Marquee */
+  .marquee-wrap {
+    position: relative; margin: 0 -32px 56px; padding: 24px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .marquee-wrap::before, .marquee-wrap::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+  }
+  .marquee-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+  .marquee-wrap::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+  .marquee { display: flex; gap: 14px; width: max-content; animation: scroll 60s linear infinite; }
+  .marquee:hover { animation-play-state: paused; }
+  .brand-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 18px 10px 10px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 100px;
+    font-size: 13.5px; font-weight: 600; color: var(--text); white-space: nowrap;
+    transition: all 0.25s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .brand-chip:hover { border-color: var(--claude); transform: translateY(-1px); }
+  .brand-chip img { width: 26px; height: 26px; padding: 3px; border-radius: 7px;
+                   background: rgba(255,255,255,0.04); object-fit: contain; }
+  .brand-chip .em { width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center;
+                    font-size: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+                    border-radius: 7px; }
+
+  /* PART section */
+  .part {
+    margin-bottom: 56px;
+    opacity: 0; transform: translateY(28px);
+    scroll-margin-top: 90px;
+  }
+  .part.in-view { animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+  .part-head {
+    display: flex; align-items: center; gap: 18px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, color-mix(in oklab, var(--c) 18%, transparent), transparent);
+    border: 1px solid color-mix(in oklab, var(--c) 30%, var(--border));
+    border-radius: 16px;
+    margin-bottom: 22px;
+  }
+  .part-art {
+    width: 84px; height: 84px; flex-shrink: 0;
+    border-radius: 14px; object-fit: cover; display: block;
+    border: 1px solid color-mix(in oklab, var(--c) 45%, var(--border));
+    box-shadow: 0 0 26px color-mix(in oklab, var(--c) 30%, transparent),
+                0 10px 24px rgba(0,0,0,0.45),
+                inset 0 0 0 1px rgba(255,255,255,0.05);
+    filter: saturate(1.05);
+  }
+  @media (max-width: 720px) { .part-art { width: 60px; height: 60px; } }
+  .part-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 36px; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--c);
+    text-shadow: 0 0 24px color-mix(in oklab, var(--c) 40%, transparent);
+    line-height: 1; min-width: 80px;
+  }
+  .part-info { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+  .part-tools {
+    display: flex; align-items: center; gap: 6px; flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+  .part-tool {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 9px;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .part-tool:hover {
+    background: rgba(0,0,0,0.4);
+    border-color: color-mix(in oklab, var(--c) 60%, transparent);
+    transform: translateY(-1px);
+  }
+  .part-tool img { width: 18px; height: 18px; object-fit: contain; display: block; }
+  .part-tool .em { font-size: 16px; line-height: 1; }
+  .part-tool.compliance {
+    background: rgba(96,165,250,0.10);
+    border-color: rgba(96,165,250,0.35);
+    color: #93c5fd;
+  }
+  .part-tool.compliance svg { width: 16px; height: 16px; }
+  .part-tool::after {
+    content: attr(data-name);
+    position: absolute; bottom: calc(100% + 6px); left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    color: var(--text);
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    padding: 3px 7px; border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .part-tool:hover::after { opacity: 1; }
+  @media (max-width: 720px) {
+    .part-head { flex-wrap: wrap; }
+    .part-tools { max-width: 100%; justify-content: flex-start; margin-top: 8px; }
+  }
+  .part-info h2 {
+    font-size: clamp(23px, 2.7vw, 32px);
+    font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;
+    background: linear-gradient(115deg, var(--c) 0%, color-mix(in oklab, var(--c) 32%, #ffffff) 55%, #ffffff 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 26px color-mix(in oklab, var(--c) 22%, transparent);
+  }
+  .part-info .meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--dim); letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .part-info .meta strong { color: var(--c); margin-right: 4px; }
+
+  /* Outcome grid */
+  .out-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 1024px) { .out-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px)  { .out-grid { grid-template-columns: 1fr; } }
+
+  .out-card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    display: flex; flex-direction: column; gap: 10px;
+    min-height: 140px;
+  }
+  .out-card:hover {
+    border-color: color-mix(in oklab, var(--c) 50%, var(--border-2));
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px -10px color-mix(in oklab, var(--c) 30%, rgba(0,0,0,0.4));
+  }
+  .out-head { display: flex; align-items: baseline; gap: 10px; }
+  .out-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    color: var(--c);
+    flex-shrink: 0;
+    background: color-mix(in oklab, var(--c) 12%, transparent);
+    padding: 3px 8px; border-radius: 5px;
+  }
+  .out-title {
+    font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .out-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+  .out-card li {
+    font-size: 12.5px; color: var(--muted); line-height: 1.5;
+    padding-left: 14px; position: relative;
+  }
+  .out-card li::before {
+    content: '';
+    position: absolute; left: 0; top: 8px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: color-mix(in oklab, var(--c) 70%, var(--dim));
+  }
+  /* Brand logo chips inside lesson cards */
+  .card-stack {
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px dashed rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
+  .stack-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 8px 4px 5px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 999px;
+    font-size: 10.5px; font-weight: 600;
+    color: var(--muted); letter-spacing: 0.01em;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+  .stack-pill:hover {
+    background: rgba(40,69,255,0.07);
+    border-color: rgba(40,69,255,0.3);
+    color: var(--text);
+    transform: translateY(-1px);
+  }
+  .stack-pill img {
+    width: 13px; height: 13px; object-fit: contain;
+    display: block;
+  }
+  .stack-pill .em {
+    width: 13px; height: 13px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; line-height: 1;
+  }
+  .stack-pill.compliance {
+    background: rgba(96,165,250,0.06);
+    border-color: rgba(96,165,250,0.25);
+    color: #93c5fd;
+  }
+  .stack-pill.compliance:hover {
+    background: rgba(96,165,250,0.1);
+    border-color: rgba(96,165,250,0.45);
+    color: #dbeafe;
+  }
+  .stack-pill.compliance svg { width: 12px; height: 12px; }
+  .out-card code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    background: var(--ui-2); padding: 1px 5px; border-radius: 3px;
+    color: color-mix(in oklab, var(--c) 80%, var(--text));
+  }
+
+  /* Part connector line */
+  .part-connector {
+    width: 2px; height: 60px; margin: -8px auto 24px;
+    background: linear-gradient(180deg, var(--c-from), var(--c-to));
+    border-radius: 2px;
+    box-shadow: 0 0 18px color-mix(in oklab, var(--c-from) 50%, transparent);
+    opacity: 0.5;
+  }
+
+  /* Bonus files */
+  .bonus {
+    margin-top: 80px;
+    padding: 36px 36px 32px;
+    background: linear-gradient(135deg, rgba(40, 69, 255, 0.06), var(--card));
+    border: 1px solid rgba(40, 69, 255, 0.25);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bonus::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--claude), transparent);
+    opacity: 0.6;
+  }
+  .bonus-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .bonus-head h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+  .bonus-head .bag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; color: var(--claude); text-transform: uppercase;
+    padding: 3px 9px; background: rgba(40,69,255,0.1);
+    border: 1px solid rgba(40,69,255,0.3); border-radius: 4px;
+  }
+  .bonus p { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; font-style: italic; }
+  .bonus-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px;
+  }
+  .bonus-item { padding: 15px 17px; font-size: 14px; gap: 13px; border-radius: 13px; font-weight: 500; }
+  .bonus-item .bonus-check {
+    width: 30px; height: 30px; border-radius: 9px; font-size: 15px; border: 0;
+    background: rgba(255,107,53,0.12); box-shadow: inset 0 0 0 1px rgba(255,107,53,0.28);
+  }
+  .bonus-item.featured {
+    border-color: rgba(255,107,53,0.5);
+    background: linear-gradient(135deg, rgba(255,107,53,0.12), rgba(255,255,255,0.02));
+    box-shadow: 0 10px 30px -16px rgba(255,107,53,0.5);
+  }
+  .bonus-item.featured .bonus-check { background: var(--claude); color:#fff; box-shadow:none; }
+  .bonus-val {
+    margin-left: auto; flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
+    color: var(--claude); background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.28); padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+  }
+  @media (max-width: 640px) { .bonus-grid { grid-template-columns: 1fr; } }
+  .bonus-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 13.5px; color: var(--text);
+    transition: all 0.2s;
+  }
+  .bonus-item:hover { border-color: rgba(40,69,255,0.4); background: rgba(40,69,255,0.04); transform: translateY(-1px); }
+  .bonus-check {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border: 1.5px solid var(--border-2);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    color: var(--claude);
+  }
+
+  /* ====== Memory Operating System — embedded tab ====== */
+  .mem-os {
+    position: relative;
+    margin: 0 0 18px;
+    padding: 16px 18px 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: linear-gradient(180deg, var(--card-2), var(--card));
+    overflow: hidden;
+  }
+  .mem-os-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 12px;
+  }
+  .mem-os-head-left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .mem-os-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    color: #4ade80; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid rgba(34,197,94,0.3);
+    border-radius: 999px;
+    background: rgba(34,197,94,0.06);
+  }
+  .mem-os-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #22c55e; box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .mem-os-title {
+    font-size: 14px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .mem-os-title .accent { color: #4ade80; }
+  .mem-os-stats {
+    display: inline-flex; gap: 14px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; color: var(--dim);
+  }
+  .mem-os-stats strong { color: var(--text); font-weight: 700; }
+
+  .mem-os-canvas {
+    position: relative;
+    height: 280px;
+    border: 1px solid var(--border-2);
+    border-radius: 10px;
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(34,197,94,0.08), transparent 65%),
+      #0a0c14;
+    overflow: hidden;
+  }
+  .mem-os-canvas::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  .mem-edges {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .mem-edges line { stroke: rgba(255,255,255,0.12); stroke-width: 1; fill: none; }
+  .mem-edges line.active { stroke: rgba(40,69,255,0.55); stroke-width: 1.3; filter: drop-shadow(0 0 4px rgba(40,69,255,0.55)); }
+  .mem-edges line.warm   { stroke: rgba(251,191,36,0.4); stroke-width: 1.1; filter: drop-shadow(0 0 3px rgba(251,191,36,0.35)); }
+
+  /* Memory Core */
+  .mem-core {
+    position: absolute; top: 50%; left: 50%;
+    width: 56px; height: 56px;
+    margin: -28px 0 0 -28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #86efac, #15803d);
+    box-shadow:
+      0 0 0 2px rgba(34,197,94,0.18),
+      0 0 36px rgba(34,197,94,0.55),
+      0 0 80px rgba(34,197,94,0.25);
+    z-index: 5;
+    animation: corePulse 3.2s ease-in-out infinite;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800; color: rgba(0,0,0,0.55);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  @keyframes corePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+
+  /* Workspace nodes (logo discs) */
+  .mem-ws {
+    position: absolute;
+    width: 34px; height: 34px;
+    margin: -17px 0 0 -17px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff3c4, #1a1d2a);
+    box-shadow:
+      0 0 0 1.5px rgba(251,191,36,0.5),
+      0 0 18px rgba(251,191,36,0.45);
+    z-index: 3;
+    animation: wsBob 6s ease-in-out infinite;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .mem-ws.lg { width: 42px; height: 42px; margin: -21px 0 0 -21px; box-shadow: 0 0 0 1.5px rgba(251,191,36,0.55), 0 0 24px rgba(251,191,36,0.55); }
+  .mem-ws img {
+    width: 60%; height: 60%; object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+  }
+  .mem-ws .em { font-size: 16px; line-height: 1; }
+  .mem-ws.lg .em { font-size: 20px; }
+  @keyframes wsBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+  .mem-ws-label {
+    position: absolute; top: calc(100% + 4px); left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600;
+    color: rgba(251,191,36,0.85);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  }
+
+  /* File nodes (diamonds) */
+  .mem-file {
+    position: absolute;
+    width: 10px; height: 10px;
+    margin: -5px 0 0 -5px;
+    background: #a78bfa;
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px rgba(167,139,250,0.6);
+    z-index: 2;
+  }
+  .mem-file.dim { background: #6b7280; box-shadow: 0 0 6px rgba(107,114,128,0.4); }
+  .mem-file-label {
+    position: absolute;
+    transform: rotate(-45deg) translate(14px, -2px);
+    transform-origin: top left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: rgba(167,139,250,0.85);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .mem-os-legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-top: 12px;
+    font-size: 10px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;
+  }
+  .mem-os-legend .item { display: inline-flex; align-items: center; gap: 6px; }
+  .mem-os-legend .sw { width: 8px; height: 8px; border-radius: 50%; }
+  .mem-os-legend .sw.diamond { transform: rotate(45deg); border-radius: 1px; }
+  .mem-os-legend .sw.line { width: 14px; height: 2px; border-radius: 0; }
+
+  @media (max-width: 720px) {
+    .mem-os-canvas { height: 240px; }
+    .mem-ws-label { display: none; }
+    .mem-file-label { display: none; }
+  }
+
+  /* ====== Unlock Now CTA ====== */
+  .unlock-section {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    opacity: 0; animation: fadeIn 0.9s ease 0.2s forwards;
+  }
+  .unlock-avatar {
+    width: 260px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow:
+      0 18px 40px -14px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(255,255,255,0.04) inset;
+    margin-bottom: 6px;
+  }
+  @property --unlock-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .unlock-cta {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    padding: 34px 56px;
+    max-width: 720px; width: 100%;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 0;
+    background:
+      radial-gradient(55% 80% at 12% 0%,  rgba(167,139,250,0.18), transparent 70%),
+      radial-gradient(55% 80% at 88% 0%,  rgba(96,165,250,0.18),  transparent 70%),
+      radial-gradient(65% 85% at 50% 110%, rgba(40,69,255,0.16), transparent 70%),
+      radial-gradient(40% 60% at 50% 50%, rgba(134,239,172,0.06), transparent 75%),
+      linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+    box-shadow:
+      0 22px 60px -22px rgba(167,139,250,0.32),
+      0 22px 60px -22px rgba(96,165,250,0.24),
+      0 14px 40px -18px rgba(40,69,255,0.30),
+      0 14px 40px -18px rgba(251,113,133,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* Rotating multicolor gradient border */
+  .unlock-cta::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from var(--unlock-angle, 0deg),
+      #A78BFA 0deg,
+      #60A5FA 60deg,
+      #34D399 120deg,
+      #FCD34D 180deg,
+      #FB7185 240deg,
+      #F472B6 300deg,
+      #A78BFA 360deg);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+            mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+    filter: saturate(1.1);
+    animation: unlock-spin 8s linear infinite;
+  }
+  @keyframes unlock-spin {
+    to { --unlock-angle: 360deg; }
+  }
+  /* Inner hover-glow stays as ::before */
+  .unlock-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(40% 60% at 30% 120%, rgba(167,139,250,0.22), transparent 70%),
+      radial-gradient(40% 60% at 70% 120%, rgba(96,165,250,0.22),  transparent 70%);
+    opacity: 0; transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .unlock-cta:hover {
+    transform: translateY(-3px);
+    filter: saturate(1.05) brightness(1.03);
+    box-shadow:
+      0 28px 70px -20px rgba(167,139,250,0.48),
+      0 28px 70px -20px rgba(96,165,250,0.36),
+      0 18px 50px -18px rgba(40,69,255,0.40),
+      0 18px 50px -18px rgba(251,113,133,0.28),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .unlock-cta:hover::after { animation-duration: 4s; }
+  .unlock-cta:hover::before { opacity: 1; }
+  .unlock-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    color: var(--claude); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .unlock-eyebrow .pulse-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--claude);
+    box-shadow: 0 0 12px rgba(40,69,255,0.8);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .unlock-title {
+    font-size: 36px; font-weight: 800;
+    color: var(--text); letter-spacing: -0.02em;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .unlock-title .arrow {
+    color: var(--claude);
+    transition: transform 0.3s ease;
+  }
+  .unlock-cta:hover .unlock-title .arrow { transform: translateX(6px); }
+  .unlock-lede {
+    font-size: 17px; font-weight: 600;
+    color: var(--text); text-align: center;
+    line-height: 1.45; letter-spacing: -0.01em;
+    max-width: 540px;
+    background: linear-gradient(90deg, #A78BFA, #FFFFFF 45%, #FFB071);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .unlock-plus {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    font-size: 15.5px; font-weight: 600;
+    color: var(--text); text-align: center;
+    line-height: 1.45; letter-spacing: -0.01em;
+    max-width: 540px;
+  }
+  .unlock-plus .plus-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--claude);
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(40,69,255,0.10);
+    border: 1px solid rgba(40,69,255,0.30);
+    transform: translateY(-1px);
+  }
+  .unlock-sub {
+    font-size: 14.5px; color: var(--muted);
+    text-align: center; line-height: 1.55;
+    max-width: 520px;
+  }
+  .unlock-sub strong { color: var(--text); font-weight: 700; }
+  @media (max-width: 640px) {
+    .unlock-cta { padding: 24px 24px; }
+    .unlock-title { font-size: 28px; }
+  }
+
+  /* ====== Full Stack Logo Gallery ====== */
+  .stack-section {
+    margin-top: 72px;
+    margin-bottom: 8px;
+    padding: 36px 28px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background:
+      radial-gradient(80% 60% at 50% 0%, rgba(40,69,255,0.06), transparent 60%),
+      linear-gradient(180deg, var(--card-2), var(--card));
+    opacity: 0; animation: fadeIn 1s ease 0.4s forwards;
+  }
+  .stack-head { text-align: center; margin-bottom: 26px; }
+  .stack-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600; color: var(--claude);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid rgba(40,69,255,0.3);
+    border-radius: 999px;
+    background: rgba(40,69,255,0.06);
+  }
+  .stack-title {
+    font-size: 30px; font-weight: 800;
+    color: var(--text); letter-spacing: -0.02em;
+    margin-top: 14px; line-height: 1.15;
+  }
+  .stack-title .accent { color: var(--claude); }
+  .stack-sub {
+    font-size: 14px; color: var(--muted);
+    max-width: 540px; margin: 10px auto 0; line-height: 1.55;
+  }
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .stack-tile {
+    position: relative;
+    padding: 18px 10px 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .stack-tile:hover {
+    border-color: var(--claude);
+    background: rgba(40,69,255,0.05);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(40,69,255,0.15);
+  }
+  .stack-tile img {
+    width: 36px; height: 36px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  }
+  .stack-tile .em {
+    width: 36px; height: 36px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 28px; line-height: 1;
+  }
+  .stack-tile .label {
+    font-size: 11.5px; font-weight: 600;
+    color: var(--text); text-align: center;
+    letter-spacing: 0.01em;
+  }
+
+  /* Footer — Skool community card */
+  .skool-card {
+    margin-top: 72px;
+    position: relative;
+    padding: 44px 40px 40px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(40,69,255,0.10), transparent 55%),
+      radial-gradient(120% 140% at 100% 100%, rgba(40,69,255,0.08), transparent 55%),
+      linear-gradient(180deg, var(--card-2), var(--card));
+    overflow: hidden;
+    opacity: 0; animation: fadeIn 1s ease 0.8s forwards;
+  }
+  .skool-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(40,69,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(40,69,255,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    pointer-events: none;
+  }
+  .skool-card > * { position: relative; z-index: 1; }
+
+  .skool-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    color: var(--claude);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid rgba(40,69,255,0.35);
+    border-radius: 999px;
+    background: rgba(40,69,255,0.08);
+    margin-bottom: 18px;
+  }
+  .skool-eyebrow .dot {
+    width: 6px; height: 6px; background: var(--claude); border-radius: 50%;
+    box-shadow: 0 0 10px var(--claude); animation: pulse 2s ease-in-out infinite;
+  }
+
+  .skool-title {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--text); line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .skool-title .accent { color: var(--claude); }
+  .skool-sub {
+    font-size: 15px; color: var(--muted); line-height: 1.5;
+    max-width: 620px;
+    margin-bottom: 28px;
+  }
+
+  .skool-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .skool-stat {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  .skool-stat:hover {
+    border-color: rgba(40,69,255,0.4);
+    background: rgba(40,69,255,0.04);
+    transform: translateY(-2px);
+  }
+  .skool-stat-icon {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(40,69,255,0.10);
+    border: 1px solid rgba(40,69,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--claude);
+  }
+  .skool-stat-icon svg { width: 18px; height: 18px; }
+  .skool-stat-icon.avatar {
+    background: transparent; border: 1.5px solid rgba(40,69,255,0.5);
+    overflow: hidden; padding: 0;
+  }
+  .skool-stat-icon.avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .skool-stat-text {
+    display: flex; flex-direction: column; min-width: 0;
+  }
+  .skool-stat-label {
+    font-size: 11px; color: var(--dim);
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+  }
+  .skool-stat-value {
+    font-size: 15px; color: var(--text); font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ====== Skool-style feed (light cards on dark) ====== */
+  .skool-feed-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    margin: 8px 0 16px;
+  }
+  .skool-feed-title {
+    font-size: 13px; font-weight: 700;
+    color: var(--text); letter-spacing: 0.02em;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .skool-feed-title::before { content: ''; width: 24px; height: 1px; background: var(--claude); }
+  .skool-feed-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--dim);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  .skool-marquee {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -28px 32px;
+    padding: 8px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+  }
+  .skool-feed {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 14px;
+    width: max-content;
+    padding: 0 28px;
+    animation: skool-scroll 90s linear infinite;
+  }
+  .skool-marquee:hover .skool-feed { animation-play-state: paused; }
+  .skool-feed .skool-post {
+    width: 320px;
+    flex-shrink: 0;
+    height: auto;
+    align-self: flex-start;
+  }
+  .skool-feed .skool-post .skool-actions { display: none; }
+  @keyframes skool-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-50% - 7px)); }
+  }
+
+  .skool-post {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+    color: #1F1F1F;
+    font-family: 'Roboto', -apple-system, sans-serif;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .skool-post:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+  }
+
+  .skool-post-header {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .skool-avatar {
+    position: relative;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    overflow: visible;
+    flex-shrink: 0;
+  }
+  .skool-avatar .photo {
+    position: relative;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 13px; letter-spacing: 0.02em;
+    font-family: 'Roboto', sans-serif;
+  }
+  .skool-avatar .photo > span {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .skool-avatar .photo img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .skool-level {
+    position: absolute;
+    bottom: -2px; left: -3px;
+    min-width: 18px; height: 18px; padding: 0 4px;
+    background: #4A6BF5;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: #fff;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .skool-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .skool-name { font-size: 14px; font-weight: 700; color: #1F1F1F; line-height: 1.2; }
+  .skool-when {
+    font-size: 12px; color: #717171; line-height: 1.4;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .skool-when .dot { color: #BDBDBD; }
+
+  .skool-icons {
+    display: inline-flex; align-items: center; gap: 12px;
+    color: #B0B0B0;
+  }
+  .skool-icons svg { width: 16px; height: 16px; display: block; }
+
+  .skool-title {
+    font-size: 18px; font-weight: 700; color: #1F1F1F;
+    line-height: 1.3; margin: -2px 0 0;
+  }
+  .skool-body {
+    font-size: 14px; color: #2D2D2D; line-height: 1.55;
+  }
+  .skool-body .mention { color: #1B66F0; }
+
+  .skool-actions {
+    margin-top: auto;
+    padding-top: 4px;
+    display: flex; align-items: center; gap: 18px;
+    font-size: 13px; color: #717171;
+  }
+  .skool-actions .item {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 8px; border-radius: 8px;
+  }
+  .skool-actions svg { width: 16px; height: 16px; }
+
+  @media (max-width: 620px) {
+    .skool-feed .skool-post { width: 280px; }
+  }
+
+  .skool-cta-row {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; flex-wrap: wrap; text-align: center;
+    margin-top: 8px;
+  }
+  .skool-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    background: var(--claude);
+    color: #fff !important;
+    font-size: 15px; font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(40,69,255,0.25);
+  }
+  .skool-cta:hover {
+    background: var(--claude-2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(40,69,255,0.35);
+  }
+  .skool-cta .arrow { transition: transform 0.2s ease; }
+  .skool-cta:hover .arrow { transform: translateX(4px); }
+
+  .skool-note {
+    font-size: 13px; color: var(--dim);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .skool-note .pulse-dot {
+    width: 6px; height: 6px; background: #22c55e; border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34,197,94,0.6); animation: pulse 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 720px) {
+    .skool-card { padding: 32px 24px; }
+    .skool-title { font-size: 24px; }
+    .skool-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .footer {
+    margin-top: 32px; padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+    opacity: 0; animation: fadeIn 1s ease 1s forwards;
+  }
+  .footer-sig { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--dim); letter-spacing: 0.1em; }
+  .footer-pin {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--claude); font-weight: 600;
+  }
+  .footer-pin .dot {
+    width: 6px; height: 6px; background: var(--claude); border-radius: 50%;
+    box-shadow: 0 0 10px var(--claude); animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* Back to top */
+  .back-top {
+    position: fixed; bottom: 28px; right: 28px; z-index: 60;
+    width: 44px; height: 44px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
+    color: var(--muted); font-size: 16px;
+    text-decoration: none;
+  }
+  .back-top.visible { opacity: 1; pointer-events: auto; }
+  .back-top:hover { border-color: var(--claude); color: var(--claude); transform: translateY(-3px); }
+
+  /* ===== Live 3D memory graph ===== */
+  .mem-graph3d-wrap{position:relative;margin:0 0 18px;border:1px solid var(--border);border-radius:14px;
+    background:radial-gradient(60% 60% at 50% 45%, rgba(61,220,151,0.06), transparent 70%), linear-gradient(180deg,var(--card-2),var(--card));overflow:hidden;}
+  .mem-graph3d-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 18px 6px;}
+  .mem-graph3d{width:100%;height:440px;pointer-events:none;}
+  .mem-graph3d canvas{display:block;pointer-events:none;}
+  @media (max-width:720px){ .mem-graph3d{height:320px;} }
+
+  /* ===== Right-hand scroll-spy rail ===== */
+  .os-rail{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:70;
+    display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+  .os-rail-os{display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+    font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--claude);padding:8px 12px;border-radius:100px;
+    border:1px solid color-mix(in oklab, var(--claude) 42%, var(--border));
+    background:color-mix(in oklab, var(--claude) 12%, transparent);
+    box-shadow:0 6px 20px -8px var(--claude-glow);transition:all .2s;margin-bottom:6px;}
+  .os-rail-os span{transition:transform .2s;}
+  .os-rail-os:hover{background:color-mix(in oklab, var(--claude) 22%, transparent);transform:translateX(-2px);}
+  .os-rail-os:hover span{transform:translateX(3px);}
+  .os-rail ul{list-style:none;display:flex;flex-direction:column;gap:3px;margin:0;padding:0;}
+  .os-rail li a{display:flex;align-items:center;justify-content:flex-end;gap:9px;text-decoration:none;
+    color:var(--dim);font-size:11px;font-weight:600;padding:3px 0;transition:color .2s;}
+  .os-rail .t{opacity:0;transform:translateX(6px);transition:opacity .2s, transform .2s;white-space:nowrap;}
+  .os-rail li a:hover{color:var(--text);}
+  .os-rail li a:hover .t,.os-rail li a.active .t{opacity:1;transform:none;}
+  .os-rail .d{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--faint);flex-shrink:0;transition:all .2s;}
+  .os-rail li a.active{color:var(--text);}
+  .os-rail li a.active .d{background:var(--claude);border-color:var(--claude);box-shadow:0 0 10px var(--claude-glow);transform:scale(1.3);}
+  @media (max-width:1180px){ .os-rail{display:none;} }
+
+
+  /* sticky header polish + scroll-spy active state + OS chip */
+  .toc-bar{ box-shadow: 0 10px 30px -18px rgba(0,0,0,0.8); }
+  .toc-chip.active{
+    color: var(--text);
+    border-color: color-mix(in oklab, var(--accent, var(--claude)) 60%, var(--border));
+    background: color-mix(in oklab, var(--accent, var(--claude)) 16%, transparent);
+  }
+  .toc-chip.active .chip-num{ color: var(--accent, var(--claude)); }
+  .toc-chip.toc-os{
+    color: #ff8c5a; font-weight: 700;
+    border-color: rgba(255,107,53,0.5);
+    background: rgba(255,107,53,0.12);
+    display: inline-flex; align-items: center; gap: 7px; margin-left: 2px;
+  }
+  .toc-chip.toc-os img{ width: 14px; height: 14px; display: block; }
+  .toc-chip.toc-os:hover{ background: rgba(255,107,53,0.22); transform: translateY(-1px); }
+
+  .toc-sep{ width:1px; height:20px; background:var(--border-2); flex-shrink:0; margin:0 6px; }
+
+  /* ===== Redesigned Unlock card ===== */
+  .unlock-section{ margin-top:64px; display:flex; justify-content:center; opacity:0; animation:fadeIn .9s ease .2s forwards; }
+  .unlock-card{ display:grid; grid-template-columns:0.82fr 1fr; gap:40px; align-items:center; max-width:1000px; width:100%;
+    padding:40px 44px; border-radius:24px; border:1px solid var(--border-2);
+    background:radial-gradient(120% 130% at 0% 0%, rgba(40,69,255,0.10), transparent 55%), linear-gradient(180deg,var(--card-2),var(--card));
+    box-shadow:0 36px 90px -44px rgba(0,0,0,0.85); }
+  @media(max-width:820px){ .unlock-card{ grid-template-columns:1fr; gap:26px; padding:30px 26px; } }
+  .unlock-cta-col{ display:flex; flex-direction:column; align-items:center; gap:15px; text-align:center; }
+  .unlock-avatar{ width:100%; max-width:300px; aspect-ratio:16/9; object-fit:cover; border-radius:14px;
+    border:1px solid rgba(255,255,255,0.12); box-shadow:0 18px 40px -16px rgba(0,0,0,0.6); margin:0; }
+  .unlock-now-btn{ display:inline-flex; align-items:center; gap:10px; padding:15px 34px; border-radius:14px;
+    font-size:18px; font-weight:800; letter-spacing:-0.01em; text-decoration:none; color:#fff;
+    background:linear-gradient(135deg,#2845ff,#6d84ff); box-shadow:0 16px 38px -12px rgba(40,69,255,0.7);
+    transition:transform .2s, box-shadow .2s; }
+  .unlock-now-btn:hover{ transform:translateY(-2px); box-shadow:0 20px 46px -12px rgba(40,69,255,0.9); }
+  .unlock-now-btn .arrow{ transition:transform .2s; }
+  .unlock-now-btn:hover .arrow{ transform:translateX(4px); }
+  .unlock-lede{ font-size:14px; color:var(--muted); max-width:300px; line-height:1.5; }
+  .unlock-list-head{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--dim); margin-bottom:16px; }
+  .unlock-list{ list-style:none; display:flex; flex-direction:column; gap:12px; padding:0; margin:0; }
+  .unlock-list li{ display:flex; align-items:center; gap:12px; font-size:14.5px; color:var(--muted); line-height:1.35; }
+  .unlock-list li b{ color:var(--text); font-weight:700; }
+  .unlock-list .chk{ flex-shrink:0; width:21px; height:21px; border-radius:50%; background:rgba(61,220,151,0.14);
+    display:inline-flex; align-items:center; justify-content:center; }
+  .unlock-list .chk::after{ content:'\2713'; color:#3ddc97; font-size:11px; font-weight:800; }
+
+
+  /* ===== cross-site toggle (Claude Code <-> Hermes) ===== */
+  .site-switch{ position:sticky; top:0; z-index:90; display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:11px 14px; background:rgba(7,8,16,0.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border); }
+  .site-switch .ss-label{ font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--dim); margin-right:6px; }
+  .ss-pill{ display:inline-flex; align-items:center; gap:7px; padding:8px 20px; border-radius:100px;
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    text-decoration:none; color:var(--muted); border:1px solid var(--border); background:rgba(255,255,255,0.03); transition:all .2s; }
+  .ss-pill:hover{ color:var(--text); border-color:var(--border-2); transform:translateY(-1px); }
+  .ss-pill.active{ color:#fff; cursor:default; background:#2845ff; border-color:#2845ff; box-shadow:0 6px 20px rgba(40,69,255,0.42); }
+  .ss-pill .dotmark{ width:7px; height:7px; border-radius:50%; background:currentColor; opacity:0.8; }
+  /* nudge the section nav below the toggle */
+  .toc-bar{ top:46px; }
+
+</style>
+</head>
+<body>
+<!-- cross-site toggle -->
+<div class="wrap">
+<!-- HERO -->
+<!-- STICKY TOP HEADER (stays on scroll; highlights the section you're viewing) -->
+
+<div style="text-align:center; padding: 60px 20px 20px; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 10;">
+<div class="hero-logo" style="width: 88px; height: 88px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 24px;">
+<img alt="Logo" src="https://hermes-masterclass.vercel.app/hermes-assets/hermes-portrait.png" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+</div>
+<h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 900; letter-spacing: -0.04em; color: var(--text);">Jak zacząć z Agent Hermes</h1>
+</div>
+<nav class="toc-bar">
+<div class="toc-inner">
+<a class="toc-chip" data-c="1" data-target="part-1" href="#part-1"><span class="chip-num">01</span> Podstawy</a>
+<a class="toc-chip" data-c="2" data-target="part-2" href="#part-2"><span class="chip-num">02</span> Konfiguracja</a>
+<a class="toc-chip" data-c="3" data-target="part-3" href="#part-3"><span class="chip-num">03</span> Zasilanie</a>
+<a class="toc-chip" data-c="4" data-target="part-4" href="#part-4"><span class="chip-num">04</span> Pamięć</a>
+<a class="toc-chip" data-c="5" data-target="part-5" href="#part-5"><span class="chip-num">05</span> Podłącz</a>
+<a class="toc-chip" data-c="6" data-target="part-6" href="#part-6"><span class="chip-num">06</span> Funkcje Premium</a>
+<a class="toc-chip" data-c="7" data-target="part-7" href="#part-7"><span class="chip-num">07</span> Hermes OS</a>
+<a class="toc-chip" data-c="9" data-target="part-8" href="#part-9"><span class="chip-num">08</span> Bezpieczeństwo</a>
+<a class="toc-chip" data-c="10" data-target="part-9" href="#part-10"><span class="chip-num">09</span> Pieniądze</a>
+<a class="toc-chip" data-c="8" data-target="part-10" href="#part-8"><span class="chip-num">10</span> Claude Code</a>
+</div>
+</nav>
+ MARQUEE LOGO 
+<div class="marquee-wrap">
+<div class="marquee" id="marquee"></div>
+</div>
+ CZĘŚĆ 1 
+<section class="part" id="part-1" style="--c: var(--p1);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/portal-figure.webp"/>
+<div class="part-num">01</div>
+<div class="part-info">
+<h2>Podstawy Hermesa</h2>
+<div class="meta"><strong>8</strong> lekcje · czym jest Hermes, dlaczego ma znaczenie — samorozwijający się agent</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">1.1</span><span class="out-title">Agent, nie chatbot</span></div><ul><li>Chatbot mówi ci jak zarezerwować lot — agent go rezerwuje</li><li>Podejmuje prawdziwe akcje w prawdziwym świecie</li><li>Jedna linijka, która zmienia wszystko</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.2</span><span class="out-title">Czym jest i co reprezentuje Hermes</span></div><ul><li>Twój zawsze włączony operator AI, który pracuje <em>dla</em> Ciebie</li><li>Żyje z tobą · staje się mądrzejszy · nigdy nie zaczyna od zera</li><li>Całe założenie w jedną minutę</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.3</span><span class="out-title">Samorozwijający się agent</span></div><ul><li>Uczy się ciebie, Śni, przepisuje własną pamięć</li><li>Staje się lepszy, gdy śpisz</li><li>Dlaczego to procentuje w tygodniach, nie minutach</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.4</span><span class="out-title">Anatomia Hermesa</span></div><ul><li>4 warstwy: mózg · ciało · pamięć · pętla</li><li>Co tak naprawdę działa, gdy “myśli”</li><li>Model mentalny, który odblokowuje całą resztę</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.5</span><span class="out-title">Jeden mózg, każdy interfejs</span></div><ul><li>Telegram · WhatsApp · Discord · Slack · desktop</li><li>Operator pośrodku routujący do twojego agenta</li><li>Ta sama inteligencja, każde usta</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.6</span><span class="out-title">soul.md — Biblia postaci</span></div><ul><li>Tożsamość, wartości, głos, sztywne zasady</li><li>Plik w samym sercu twojego agenta</li><li>Szablon (zostaje dla Ciebie)</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.7</span><span class="out-title">Claude Code ↔ Hermes</span></div><ul><li>Kontraktor + operator — kiedy używać którego</li><li>Jeden wspólny mózg dla obu</li><li>Połącz most, by myśleli razem</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.8</span><span class="out-title">Dlaczego to twoja nieuczciwa przewaga</span></div><ul><li>Możliwości, o których istnieniu 99% nie wie</li><li>Dla kogo to tak naprawdę jest</li><li>Gdzie tak naprawdę leży dźwignia</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p1); --c-to: var(--p2);"></div>
+ CZĘŚĆ 2 
+<section class="part" id="part-2" style="--c: var(--p2);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/feature-tasks.webp"/>
+<div class="part-num">02</div>
+<div class="part-info">
+<h2>Skonfiguruj Hermesa</h2>
+<div class="meta"><strong>7</strong> lekcje · uruchom go — lokalnie, VPS, Docker, zawsze-włączony</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">2.1</span><span class="out-title">Wybierz, gdzie żyje</span></div><ul><li>Twój Mac (za darmo) · VPS · piaskownica Docker</li><li>Wady i zalety każdego, szczerze</li><li>Dlaczego “zawsze włączony” zmienia to, co potrafi</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.2</span><span class="out-title">Instalacja i pierwsze uruchomienie</span></div><ul><li>Spraw, by Hermes mówił na Telegramie w minuty</li><li>BotFather + dozwolone ID użytkowników</li><li>Twoja pierwsza prawdziwa konwersacja</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.3</span><span class="out-title">OAuth vs klucz API</span></div><ul><li>Jak Hermes autoryzuje się w świecie</li><li>Bezpieczne wprowadzanie kluczy przez zmienne środowiskowe — nigdy w czacie</li><li>Błąd, który wycieka twoje poświadczenia</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.4</span><span class="out-title">Uruchom na VPS (zawsze włączony)</span></div><ul><li>Przeżywa restarty i usypianie laptopa</li><li>Wybory hostów 2026: Hostinger · Hetzner · Railway</li><li>~$30–75/msc za operatora 24/7</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.5</span><span class="out-title">Docker, jeśli go chcesz</span></div><ul><li>Konteneryzacja dla czystych, powtarzalnych instalacji</li><li><code>restart: unless-stopped</code> — przełącznik przetrwania</li><li>Nazwane wolumeny, by pamięć przetrwała</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.6</span><span class="out-title">Harmonogram i wyzwalacze</span></div><ul><li>cron vs systemd timers · brief Dream o 6 rano</li><li>Webhooki: email · Slack · Stripe</li><li>Pozwól światu obudzić twojego agenta</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.7</span><span class="out-title">Zrób kopię zapasową</span></div><ul><li>Kopia na GitHub przez cron</li><li>Nie trać pamięci — kopie poza maszyną</li><li>Odzyskiwanie w minutach, nie godzinach</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p2); --c-to: var(--p3);"></div>
+ CZĘŚĆ 3 
+<section class="part" id="part-3" style="--c: var(--p3);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/hero-art.webp"/>
+<div class="part-num">03</div>
+<div class="part-info">
+<h2>Zasilanie Hermesa</h2>
+<div class="meta"><strong>7</strong> lekcje · masterclass modeli — cloud, lokalnie i 100% prywatnie</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">3.1</span><span class="out-title">Posiadaj agenta, wynajmuj mózg</span></div><ul><li>Agnostyczny modelowo z założenia</li><li>Kupno Lambo i trzymanie go na 10mph</li><li>Wymieniaj silniki bez przebudowy auta</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.2</span><span class="out-title">Drzewo decyzyjne routingu</span></div><ul><li>Potężny mózg do planowania, tani model do wykonania</li><li>Opus/Fable do designu · tanie do czarnej roboty</li><li>Ten <code>/route</code> teza, zmapowana na prawdziwe zadania</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.3</span><span class="out-title">Masterclass OpenRoutera</span></div><ul><li><code>:nitro</code> <code>:floor</code> <code>:auto</code> wyjaśnione</li><li>BYOK, fallbacks, bezpieczeństwo przy zerowej kompletacji</li><li>Jeden klucz, każdy model</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.4</span><span class="out-title">100% prywatności w twoim laboratorium AI</span></div><ul><li>Uruchom w pełni lokalnie i za darmo z Ollama</li><li>Haczyk z 64K-kontekstem (Qwen 3 Coder)</li><li>Tryby Vault · Połączony · Cloud</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.5</span><span class="out-title">Nous Hermes i modele open-source</span></div><ul><li>70B / 405B, natywne wywoływanie narzędzi, poprawny JSON</li><li>Kiedy lokalny model naprawdę wystarcza</li><li>Szczera przepaść do frontu (i zmniejszająca się)</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.6</span><span class="out-title">Panteon</span></div><ul><li>Nazwane persony, każda z przypiętym modelem</li><li>Nie każ Einsteinowi myć samochodu</li><li>Orfeusz · Skryba · Atena — zostają dla Ciebie</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.7</span><span class="out-title">Triada / Rada</span></div><ul><li>Plan → Egzekucja → Krytyka w pętli</li><li>Dyrygent Opus + tani pracownik + krytyk</li><li>Nigdy nie wysyłaj niczego nieskrytykowanego</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p3); --c-to: var(--p4);"></div>
+ CZĘŚĆ 4 
+<section class="part" id="part-4" style="--c: var(--p4);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/feature-memory.webp"/>
+<div class="part-num">04</div>
+<div class="part-info">
+<h2>Daj Mu Pamięć Która Nigdy Nie Zapomina</h2>
+<div class="meta"><strong>7</strong> lekcje · rdzeń pamięci, Graphify i KB, która poprawia sama siebie</div>
+</div>
+</div>
+ Żywy graf pamięci 3D 
+<div class="mem-graph3d-wrap">
+<div class="mem-graph3d-head">
+<div class="mem-os-head-left">
+<span class="mem-os-eyebrow"><span class="dot"></span>Graf pamięci · 3D</span>
+<span class="mem-os-title">Żywa mapa pamięci z mojego <span class="accent">Claude Code OS</span></span>
+</div>
+<div class="mem-os-stats"><span><strong>na żywo</strong> · zawsze się uczy</span><span><strong>∞</strong> przypominanie</span></div>
+</div>
+<div class="mem-graph3d" id="mem-graph3d"></div>
+<div class="mem-os-legend" style="padding:0 18px 16px;">
+<span class="item"><span class="sw" style="background:#3ddc97;"></span>Rdzeń pamięci</span>
+<span class="item"><span class="sw" style="background:#e6ebf2;"></span>Obszar roboczy</span>
+<span class="item"><span class="sw" style="background:#a78bfa;"></span>Indeks wektorowy</span>
+<span class="item"><span class="sw" style="background:#60a5fa;"></span>Sesje</span>
+<span class="item"><span class="sw" style="background:#f472b6;"></span>Skille</span>
+<span class="item"><span class="sw" style="background:#f5b14c;"></span>Nieaktualne</span>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">4.1</span><span class="out-title">3-warstwowy stack pamięci</span></div><ul><li>Robocza · sesji · długoterminowa</li><li>Dlaczego okno milion-tokenów to NIE jest pamięć</li><li>Architektura, której potrzebuje każdy agent</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.2</span><span class="out-title">memory.md + przypominanie</span></div><ul><li>Jak Hermes tak naprawdę cię pamięta</li><li>Markdown + pełnotekstowe wyszukiwanie pod maską</li><li>Krzywa “2 tygodnie, by poczuć magię”</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.3</span><span class="out-title">Podepnij pamięć zewnętrzną</span></div><ul><li>Wektory Pinecone · Skarbiec Obsidian · Supabase</li><li>Wektor vs graf — kiedy który wygrywa</li><li>Prawdziwe zapytania we wszystkich źródłach na kamerze</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.4</span><span class="out-title">Samodoskonaląca się LLM Wiki</span></div><ul><li>Wiedza w stylu Karpathy'ego, dwukierunkowa</li><li>Przepisuje sama siebie, weryfikuje fakty, oflagowuje sprzeczności</li><li>Hermes zna ciebie; wiki zna twój świat</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.5</span><span class="out-title">Graphify w harmonogramie</span></div><ul><li>Auto-pobieranie z Granola, maila, notatek</li><li>Reindeksowanie sterowane cronem — trzymaj KB świeżą</li><li>Graf wiedzy, który aktualizuje sam siebie</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.6</span><span class="out-title">Higiena pamięci</span></div><ul><li>Przestarzałe fakty, rozkład i polityki TTL</li><li>Wykrywanie konfliktów: łącz, aktualizuj, oflaguj</li><li>Dlaczego pobieranie — nie generowanie — to wąskie gardło</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.7</span><span class="out-title">Zatrucie pamięci (bezpieczeństwo)</span></div><ul><li>Atak, przed którym nikt nie ostrzega</li><li>Jak wrogi e-mail przepisuje jego umysł</li><li>Bramki zapisu + okresowe audyty w-kontekście</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p4); --c-to: var(--p5);"></div>
+ CZĘŚĆ 5 
+<section class="part" id="part-5" style="--c: var(--p5);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/feature-connect.webp"/>
+<div class="part-num">05</div>
+<div class="part-info">
+<h2>Podłącz Hermesa do Czego Chcesz</h2>
+<div class="meta"><strong>6</strong> lekcje · podepnij Hermesa do apek, których używasz</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">5.1</span><span class="out-title">MCP prostym językiem</span></div><ul><li>API to okablowanie; MCP to instrukcja</li><li>Lokalne (stdio) vs zdalne (HTTP)</li><li>Stan protokołu w 2026</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">5.2</span><span class="out-title">Dodaj dowolny konektor</span></div><ul><li><code>claude mcp add</code> — http i stdio</li><li>Zakresy + <code>${VAR}</code> sekrety</li><li>Trzymaj klucze z dala od git, poprawnie</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">5.3</span><span class="out-title">Gmail + Google Drive</span></div><ul><li>Jeden OAuth odblokowuje całe Workspace</li><li>Czytaj, szukaj, szkicuj — zasada szkicuj-nie-wysyłaj</li><li>Drabina uprawnień i gdzie się zatrzymać</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">5.4</span><span class="out-title">Konektory, po które sięgniesz</span></div><ul><li>Notion · Slack · Kalendarz · Arkusze</li><li>Stripe · n8n · Zapier</li><li>Wybieraj pod zadania, nie dla hype'u</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">5.5</span><span class="out-title">Kiedy potrzebujesz własnego</span></div><ul><li>Odpal własne MCP tylko gdy nic nie istnieje</li><li>Budowa na żywo → deploy → podłączenie do Hermesa</li><li>Starter (zostaje dla Ciebie)</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">5.6</span><span class="out-title">Bezpieczeństwo konektorów</span></div><ul><li>Zatrucie narzędzi i atak rug-pull</li><li>Minimalne dostępy · confused-deputy · bindowanie tokenów</li><li>Czemu tak naprawdę powinieneś ufać</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p5); --c-to: var(--p6);"></div>
+ CZĘŚĆ 6 
+<section class="part" id="part-6" style="--c: var(--p6);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/feature-automation.webp"/>
+<div class="part-num">06</div>
+<div class="part-info">
+<h2>Funkcje Premium Hermesa</h2>
+<div class="meta"><strong>6</strong> lekcje · cele, Centrum Kontroli, Sen, subagenci i komendy</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">6.1</span><span class="out-title">Podstawowy zestaw komend</span></div><ul><li><code>/q</code> <code>/background</code> <code>/kanban</code> <code>/steer</code></li><li><code>/reset</code> <code>/compress</code> <code>/stop</code></li><li>Klucze, których użyjesz na co dzień</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.2</span><span class="out-title">Cele i Centrum Dowodzenia</span></div><ul><li><code>/goal</code> — mierzalne · ukierunkowane · samoobsługowe</li><li>Super Cel + uściski z prawdziwym światem</li><li>Sprinty AI vs ludzkie kroki, śledzone</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.3</span><span class="out-title">Silnik Snu</span></div><ul><li>Nocne samodoskonalenie, gdy ty śpisz</li><li>8 wiader → 4 karty → jeden poranny brief</li><li>Agent, który myśli o tobie, 24/7</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.4</span><span class="out-title">Zrób go proaktywnym</span></div><ul><li>Z reaktywnego narzędzia do partnera, który pisze sam <em>Ciebie</em></li><li>Cele → Sny → proaktywne szturchnięcia</li><li>Wyzwalacze, które dają poczucie, że żyje</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.5</span><span class="out-title">Subagenci i orkiestracja</span></div><ul><li>Rozradzaj pracowników z izolowanym kontekstem</li><li>Równoległa praca bez konfliktów</li><li>Główny planuje → pracownicy badają → główny syntezuje</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.6</span><span class="out-title">Pętle agentów CLI</span></div><ul><li>printingpress.dev — 100x mniej tokenów niż MCP</li><li>Wyselekcjonowana pętla: mózg dyryguje, CLI wykonuje</li><li>Dlaczego agenci byli trenowani w konsoli</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p6); --c-to: var(--p7);"></div>
+ CZĘŚĆ 7 
+<section class="part" id="part-7" style="--c: var(--p7);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/badge.webp"/>
+<div class="part-num">07</div>
+<div class="part-info">
+<h2>System Operacyjny Hermes</h2>
+<div class="meta"><strong>7</strong> lekcje · konsola operatora read-only — twoje centrum dowodzenia AI</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">7.1</span><span class="out-title">Czym jest OS</span></div><ul><li>Jedna konsola do całego stosu AI</li><li>Tylko-do-odczytu z założenia — bezpieczne do podglądania</li><li>“Claude Code + Hermes OS”, w jednym miejscu</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.2</span><span class="out-title">Przegląd dashboardu</span></div><ul><li>Home · Pamięć · Skille · Aktywność · Agenci</li><li>Wbudowane śledzenie wydatków i ROI</li><li>Wszystko na jednej tafli szkła</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.3</span><span class="out-title">Żywa pamięć i widok Inteligencji</span></div><ul><li>Graf pamięci 3D, na ekranie</li><li>Graf wiedzy i tabela liderów modeli</li><li>Patrz jak twój drugi mózg myśli</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.4</span><span class="out-title">Sen i Centrum Dowodzenia, zwizualizowane</span></div><ul><li>Twój poranny brief, w OS</li><li>Cele zsynchronizowane 1:1 z Claude Code</li><li>Zobacz co jest pracą agenta a co twoją</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.5</span><span class="out-title">Zainstaluj i uruchom OS</span></div><ul><li>Rdzeń Claude Code + tier Hermesa</li><li>Gotowy do pracy w minuty</li><li>Zmostkowany Graphify od pierwszego dnia</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.6</span><span class="out-title">Most Claude Code ↔ Hermes</span></div><ul><li>Jeden wspólny mózg do kodowania i życia</li><li>Napraw problem “braku handshake'a”</li><li>Wszystko połączone</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.7</span><span class="out-title">Zrób to po swojemu</span></div><ul><li>Persony Panteonu i przypięte modele</li><li>Tablica intel-modelu</li><li>Dostosuj konsolę do swojego stacku</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p7); --c-to: var(--p9);"></div>
+ CZĘŚĆ 8 
+<section class="part" id="part-8" style="--c: var(--p9);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/feature-sandbox.webp"/>
+<div class="part-num">08</div>
+<div class="part-info">
+<h2>Bezpieczeństwo i Zgodność</h2>
+<div class="meta"><strong>7</strong> lekcje · barierki, sekrety i prywatność — utrzymuj prawdziwy biznes bezpieczny</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">8.1</span><span class="out-title">Poziomowanie ryzyka</span></div><ul><li>Odczyt · odwracalne · zewnętrzne · nieodwracalne</li><li>Bramka na podstawie konsekwencji, nie pewności modelu</li><li>Decyzja żyje w kodzie, nie w prompcie</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.2</span><span class="out-title">Lista zawsze-zatrzymywanych i Strażnik</span></div><ul><li>Wdrożenia · comms · pieniądze · usuwanie · uprawnienia</li><li>Hooki PreToolUse: zablokuj, zmodyfikuj, autozatwierdź</li><li>Dlaczego “agent decyduje, kiedy pytać” zawodzi</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.3</span><span class="out-title">Bramki akceptacji i kill switche</span></div><ul><li>Zaproponuj → potwierdź dla wszystkiego znaczącego</li><li>30-minutowe okno, aby nic nie blokowało na zawsze</li><li>Jak zatrzymać to w połowie</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.4</span><span class="out-title">Wydatki i ochrona przed pętlami</span></div><ul><li><code>max_turns</code> + sztywne limity budżetu tokenów</li><li>Bezpieczniki i wykrywanie pętli</li><li>Jak agenci po cichu przepalają $700 przez noc</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.5</span><span class="out-title">Zarządzanie sekretami</span></div><ul><li>zmienne środowiskowe · gitignore <em>oraz</em> dockerignore</li><li>Brelok systemowy · Doppler · Infisical</li><li>Klucz w historii git jest stracony na zawsze</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.6</span><span class="out-title">Obserwowalność i zarządzanie kosztami</span></div><ul><li>Śledzenie Langfuse / Helicone na poziomie run-level</li><li>Limity wydatków w konsoli + budżety per-model</li><li>Znajdź i zabij uciekające spalanie tokenów</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.7</span><span class="out-title">Prywatność i prawo</span></div><ul><li>RODO prawo do bycia zapomnianym poprzez podział pamięci użytkowników</li><li>HIPAA / zgoda dwóch stron na przechwytywanie</li><li>Czego regulowani klienci tak naprawdę potrzebują</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p9); --c-to: var(--p10);"></div>
+ CZĘŚĆ 9 — ZARABIAJ Z HERMESEM 
+<section class="part" id="part-9" style="--c: var(--p10);">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/feature-browse.webp"/>
+<div class="part-num">09</div>
+<div class="part-info">
+<h2>Zarabiaj z Hermesem</h2>
+<div class="meta"><strong>9 lekcji</strong> · przychody na wyciągnięcie ręki — wszystkie sposoby na monetyzację Hermesa, dla Ciebie i dla klientów</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">9.1</span><span class="out-title">Skonfiguruj Hermesa dla innych</span></div><ul><li>Instalacje pod klucz — pobieraj opłatę za wdrożenie</li><li>Zamień nową umiejętność w usługę</li><li>Najszybszy pierwszy dolar</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.2</span><span class="out-title">Obsługa back-office AI</span></div><ul><li>Miesięczny powtarzalny przychód</li><li>Działania · raporty · planowanie na autopilocie</li><li>To, co zawsze działa, bez pilnowania</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.3</span><span class="out-title">Sprzedawaj rezultat, nie godziny</span></div><ul><li>Wycena oparta o wartość i rezultat</li><li>$10–35K budowy + $1.5–4K/msc obsługa</li><li>Pobieraj opłatę za koszty operacyjne</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.4</span><span class="out-title">Zdobądź lokalne firmy</span></div><ul><li>Dachkarze · kliniki · fachowcy · agencje</li><li>Niszuj wertykalnie — sprzedawaj mniej błędnych założeń</li><li>Zaczynaj od kalkulatora ROI, a nie od funkcji</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.5</span><span class="out-title">Produktuj i wprowadzaj white-label</span></div><ul><li>Pakuj w jeden system, sprzedawaj wielokrotnie</li><li>Wdróż OS na white-label do innych operatorów</li><li>Powtarzalne bije jednorazowe, za każdym razem</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.6</span><span class="out-title">Skaluj swój WŁASNY biznes za jego pomocą</span></div><ul><li>Gra meta: rozwijaj to, czym już zarządzasz</li><li>Hermes jako twoja niesprawiedliwa dźwignia operacyjna</li><li>Zainwestuj z powrotem odzyskane godziny</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.7</span><span class="out-title">Treść, publiczność i sponsorstwa</span></div><ul><li>Zarabiaj na budowaniu publicznie</li><li>Sponsoringi · afiliacje · płatna społeczność</li><li>Zamień widownię w potok klientów</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.8</span><span class="out-title">Suwerenność na skalę</span></div><ul><li>Odpalaj OS klientów z regułami, powtarzalnie</li><li>Flota, którą zarządzasz — i odsprzedajesz</li><li>Izolacja multi-tenant · pamięć na klienta</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.9</span><span class="out-title">Twój codzienny kokpit do robienia kasy</span></div><ul><li>OS wydobywa na wierzch dzisiejsze najbardziej zyskowne ruchy</li><li>Recepty na sen → akcje generujące zysk</li><li>Proaktywność zamieniona w przychód</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p10); --c-to: #ff6b35;"></div>
+ CZĘŚĆ 10 — KURS CLAUDE CODE (towarzyszący) 
+<section class="part" id="part-10" style="--c: #ff6b35;">
+<div class="part-head">
+<img alt="" class="part-art" loading="lazy" onerror="this.style.display='none'" src="hermes-assets/hero-art.webp"/>
+<div class="part-num">10</div>
+<div class="part-info">
+<h2>Kurs Claude Code</h2>
+<div class="meta"><strong>twój towarzysz budowy</strong> · opanuj sztukę budowania i sprzedawania · <span id="osLink" rel="noopener" style="color:var(--c);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px" target="_blank">otwórz kurs →</span></div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">10.1</span><span class="out-title">Buduj prawdziwe strony</span></div><ul><li>Od zera do wdrożenia</li><li>Dane od konkurencji → design → hostowanie</li><li>Specyfikacja najpierw, za każdym razem</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.2</span><span class="out-title">Buduj pełne aplikacje</span></div><ul><li>Auth · płatności Stripe · Resend email</li><li>Bazy danych i integracje</li><li>Framework BLAST</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.3</span><span class="out-title">Power features</span></div><ul><li>Umiejętności · hooki · MCP · subagenci</li><li>Autonomiczna pętla krytyka</li><li>Zlecenia &amp; zaplanowane zadania</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.4</span><span class="out-title">Design systems</span></div><ul><li>Claude Code Design · Prezentacje HTML</li><li>3D · wideo · zdjęcia AI</li><li>Automatyczne pobieranie zasobów marki</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.5</span><span class="out-title">Pamięć + Hermes Agent</span></div><ul><li>Pinecone · NotebookLM · Obsidian RAG</li><li>Zbuduj własnego operatora AI</li><li>Połącz to z pamięcią</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.6</span><span class="out-title">Wydaj to bezpiecznie</span></div><ul><li>Zgodność · bezpieczeństwo · monitorowanie</li><li>HIPAA / RODO / higiena API</li><li>SDK Anthropic</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.7</span><span class="out-title">Buduj i sprzedawaj</span></div><ul><li>$30K–$50K deals, zero outbound</li><li>Cenniki i oferty, które się dopinają</li><li>The Build &amp; Sell system</li></ul></div>
+</div>
+</section>
+ ODBLOKUJ 
+
+ STOPKA 
+
+</div>
+<span aria-label="Back to top" class="back-top" id="backTop">↑</span>
+<script>
+  // Brand marquee — Simple Icons CDN
+  const BRANDS = [
+    { name: "Hermes-Agent", local: "hermes-assets/icon.png" },
+    { name: "Nous Research",local: "hermes-assets/nous.webp" },
+    { name: "Claude",       slug: "anthropic",          color: "D97757" },
+    { name: "Telegram",     slug: "telegram",           color: "26A5E4" },
+    { name: "WhatsApp",     slug: "whatsapp",           color: "25D366" },
+    { name: "Slack",        slug: "slack",              color: "white"  },
+    { name: "Discord",      slug: "discord",            color: "5865F2" },
+    { name: "OpenRouter",   emoji: "🧭" },
+    { name: "Ollama",       slug: "ollama",             color: "white"  },
+    { name: "Nous Hermes",  emoji: "🧠" },
+    { name: "DeepSeek",     slug: "deepseek",           color: "4D6BFE" },
+    { name: "Meta Ads",     slug: "meta",               color: "0467DF" },
+    { name: "QuickBooks",   slug: "quickbooks",         color: "2CA01C" },
+    { name: "Gmail",        slug: "gmail",              color: "EA4335" },
+    { name: "Google Drive", slug: "googledrive",        color: "4285F4" },
+    { name: "Notion",       slug: "notion",             color: "white"  },
+    { name: "Pinecone",     emoji: "🌲" },
+    { name: "Obsidian",     slug: "obsidian",           color: "7C3AED" },
+    { name: "Supabase",     slug: "supabase",           color: "3FCF8E" },
+    { name: "NotebookLM",   emoji: "📔" },
+    { name: "Granola",      emoji: "🎙" },
+    { name: "MCP",          emoji: "🔌" },
+    { name: "Cal.com",      slug: "caldotcom",          color: "white"  },
+    { name: "Vapi",         emoji: "📞" },
+    { name: "ElevenLabs",   slug: "elevenlabs",         color: "white"  },
+    { name: "Firecrawl",    emoji: "🔥" },
+    { name: "Resend",       slug: "resend",             color: "white"  },
+    { name: "Stripe",       slug: "stripe",             color: "635BFF" },
+    { name: "Twilio",       slug: "twilio",             color: "F22F46" },
+    { name: "Docker",       slug: "docker",             color: "2496ED" },
+    { name: "Hostinger",    slug: "hostinger",          color: "673DE6" },
+    { name: "n8n",          slug: "n8n",                color: "EA4B71" },
+    { name: "Railway",      slug: "railway",            color: "white"  },
+    { name: "Hetzner",      slug: "hetzner",            color: "D50C2D" },
+    { name: "Cloudflare",   slug: "cloudflare",         color: "F38020" },
+    { name: "GitHub",       slug: "github",             color: "white"  },
+    { name: "Langfuse",     emoji: "📊" },
+    { name: "Ray-Ban Meta", emoji: "🕶" }
+  ];
+  function chip(b) {
+    if (b.emoji) return `<span class="brand-chip"><span class="em">${b.emoji}</span>${b.name}</span>`;
+    if (b.local) return `<span class="brand-chip"><img src="${b.local}" alt="${b.name}" loading="lazy" />${b.name}</span>`;
+    return `<span class="brand-chip"><img src="https://cdn.simpleicons.org/${b.slug}/${b.color}" alt="${b.name}" loading="lazy" />${b.name}</span>`;
+  }
+  const m = document.getElementById('marquee');
+  if (m) { const html = BRANDS.map(chip).join(''); m.innerHTML = html + html; }
+
+  // Community feed — duplicate posts for seamless marquee scroll
+  const skoolFeed = document.querySelector('.skool-feed');
+  if (skoolFeed) { skoolFeed.innerHTML += skoolFeed.innerHTML; }
+
+  // Full stack tile grid
+  const sg = document.getElementById('stack-grid');
+  if (sg) {
+    sg.innerHTML = BRANDS.map(b => {
+      const inner = b.emoji
+        ? `<span class="em">${b.emoji}</span>`
+        : b.local
+        ? `<img src="${b.local}" alt="${b.name}" loading="lazy" />`
+        : `<img src="https://cdn.simpleicons.org/${b.slug}/${b.color}" alt="${b.name}" loading="lazy" />`;
+      return `<div class="stack-tile" title="${b.name}">${inner}<span class="label">${b.name}</span></div>`;
+    }).join('');
+  }
+
+  // Auto-inject brand logo chips onto each part header (matched against card text)
+  const CARD_KEYWORDS = {
+    "Hermes Agent":  { name: "Hermes-Agent", local: "hermes-assets/icon.png" },
+    "Hermes":        { name: "Hermes-Agent", local: "hermes-assets/icon.png" },
+    "Claude Code":   { name: "Claude Code", slug: "anthropic",        color: "D97757" },
+    "Claude":        { name: "Claude",      slug: "anthropic",        color: "D97757" },
+    "soul.md":       { name: "Hermes-Agent", local: "hermes-assets/icon.png" },
+    "Nous":          { name: "Nous Research", local: "hermes-assets/nous.webp" },
+    "Hostinger":     { name: "Hostinger",  slug: "hostinger",        color: "673DE6" },
+    "n8n":           { name: "n8n",        slug: "n8n",              color: "EA4B71" },
+    "Telegram":      { name: "Telegram",    slug: "telegram",         color: "26A5E4" },
+    "WhatsApp":      { name: "WhatsApp",    slug: "whatsapp",         color: "25D366" },
+    "Slack":         { name: "Slack",       slug: "slack",            color: "white"  },
+    "Discord":       { name: "Discord",     slug: "discord",          color: "5865F2" },
+    "OpenRouter":    { name: "OpenRouter",  emoji: "🧭" },
+    "Ollama":        { name: "Ollama",      slug: "ollama",           color: "white"  },
+    "Nous Hermes":   { name: "Nous Hermes", emoji: "🧠" },
+    "Hermes 4":      { name: "Nous Hermes", emoji: "🧠" },
+    "Qwen":          { name: "Qwen",        slug: "qwen",             color: "615CED" },
+    "DeepSeek":      { name: "DeepSeek",    slug: "deepseek",         color: "4D6BFE" },
+    "Meta Ads":      { name: "Meta Ads",    slug: "meta",             color: "0467DF" },
+    "Meta":          { name: "Meta",        slug: "meta",             color: "0467DF" },
+    "QuickBooks":    { name: "QuickBooks",  slug: "quickbooks",       color: "2CA01C" },
+    "Gmail":         { name: "Gmail",       slug: "gmail",            color: "EA4335" },
+    "Google Drive":  { name: "Drive",       slug: "googledrive",      color: "4285F4" },
+    "Drive":         { name: "Drive",       slug: "googledrive",      color: "4285F4" },
+    "Google Business Profile": { name: "GBP", domain: "business.google.com" },
+    "Notion":        { name: "Notion",      slug: "notion",           color: "white"  },
+    "Pinecone":      { name: "Pinecone",    domain: "pinecone.io" },
+    "Obsidian":      { name: "Obsidian",    slug: "obsidian",         color: "8B5CF6" },
+    "Supabase":      { name: "Supabase",    slug: "supabase",         color: "3FCF8E" },
+    "Granola":       { name: "Granola",     domain: "granola.so" },
+    "Graphify":      { name: "Graphify",    emoji: "🕸️" },
+    "MCP":           { name: "MCP",         domain: "modelcontextprotocol.io" },
+    "printingpress": { name: "Printing Press", domain: "printingpress.dev" },
+    "Cal.com":       { name: "Cal.com",     slug: "caldotcom",        color: "white"  },
+    "Calendly":      { name: "Calendly",    slug: "calendly",         color: "006BFF" },
+    "Vapi":          { name: "Vapi",        emoji: "📞" },
+    "ElevenLabs":    { name: "ElevenLabs",  domain: "elevenlabs.io" },
+    "Resend":        { name: "Resend",      domain: "resend.com" },
+    "Stripe":        { name: "Stripe",      slug: "stripe",           color: "635BFF" },
+    "Twilio":        { name: "Twilio",      slug: "twilio",           color: "F22F46" },
+    "Firecrawl":     { name: "Firecrawl",   domain: "firecrawl.dev" },
+    "Docker":        { name: "Docker",      slug: "docker",           color: "2496ED" },
+    "Railway":       { name: "Railway",     domain: "railway.com" },
+    "Hetzner":       { name: "Hetzner",     slug: "hetzner",          color: "D50C2D" },
+    "systemd":       { name: "systemd",     domain: "systemd.io" },
+    "Langfuse":      { name: "Langfuse",    domain: "langfuse.com" },
+    "Helicone":      { name: "Helicone",    domain: "helicone.ai" },
+    "GitHub":        { name: "GitHub",      slug: "github",           color: "white"  },
+    "Stripe":        { name: "Stripe",      slug: "stripe",           color: "635BFF" },
+    "HIPAA":         { name: "HIPAA",       compliance: true },
+    "GDPR":          { name: "GDPR",        compliance: true },
+    "EU AI Act":     { name: "EU AI Act",   compliance: true }
+  };
+
+  const shieldSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+
+  function toolHtml(info) {
+    if (info.compliance) {
+      return `<span class="part-tool compliance" data-name="${info.name}">${shieldSvg}</span>`;
+    }
+    let icon;
+    if (info.emoji) {
+      icon = `<span class="em">${info.emoji}</span>`;
+    } else if (info.local) {
+      icon = `<img src="${info.local}" alt="${info.name}" loading="lazy" />`;
+    } else if (info.domain) {
+      icon = `<img src="https://www.google.com/s2/favicons?domain=${info.domain}&sz=128" alt="${info.name}" loading="lazy" />`;
+    } else {
+      icon = `<img src="https://cdn.simpleicons.org/${info.slug}/${info.color}" alt="${info.name}" loading="lazy" />`;
+    }
+    return `<span class="part-tool" data-name="${info.name}">${icon}</span>`;
+  }
+
+  const KEYWORDS_BY_LENGTH = Object.keys(CARD_KEYWORDS).sort((a, b) => b.length - a.length);
+
+  document.querySelectorAll('.part').forEach(part => {
+    // Join element texts with spaces so word boundaries survive (textContent concatenates adjacent <li> with no space)
+    let text = [...part.querySelectorAll('h2, .out-title, li')].map(e => e.textContent).join('  ') || (part.textContent || '');
+    const matched = [];
+    const seenIcons = new Set();
+    KEYWORDS_BY_LENGTH.forEach(k => {
+      const re = new RegExp('\\b' + k.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&') + '\\b', 'i');
+      if (re.test(text)) {
+        const info = CARD_KEYWORDS[k];
+        const iconKey = info.compliance ? `c:${info.name}`
+                      : info.slug      ? `s:${info.slug}`
+                      : info.local     ? `l:${info.local}`
+                      : info.domain    ? `d:${info.domain}`
+                      :                  `e:${info.emoji}`;
+        if (!seenIcons.has(iconKey)) {
+          matched.push(info);
+          seenIcons.add(iconKey);
+        }
+        text = text.replace(new RegExp(k, 'gi'), '');
+      }
+    });
+    if (matched.length === 0) return;
+    const head = part.querySelector('.part-head');
+    if (!head) return;
+    // Cap to 6 logos — Hermes/Claude first, then up to 5 others.
+    const primary = matched.find(m => m.local || m.slug === 'anthropic');
+    const others = matched.filter(m => m !== primary);
+    const capped = (primary ? [primary, ...others] : others).slice(0, 8);
+    const tools = document.createElement('div');
+    tools.className = 'part-tools';
+    tools.innerHTML = capped.map(toolHtml).join('');
+    head.appendChild(tools);
+  });
+
+  // Reveal sections on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.part').forEach((s) => io.observe(s));
+
+  // Back to top visibility
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) backTop.classList.add('visible');
+    else backTop.classList.remove('visible');
+  });
+</script>
+ Graf pamięci 3D — wewnętrzne three.js (glow) + wewnętrzny UMD force-graph; w pełni samowystarczalne, bez modułów CDN 
+<script type="module">
+  import * as THREE from './hermes-assets/vendor/three.module.js';
+  window.THREE = THREE;
+  window.dispatchEvent(new Event('three-ready'));
+</script>
+<script src="hermes-assets/3d-force-graph.min.js"></script>
+<script>
+  (function(){
+    var started = false;
+    function init(){
+      if (started) return;
+      var el = document.getElementById('mem-graph3d');
+      if (!el || typeof ForceGraph3D === 'undefined' || !window.THREE) return;
+      started = true;
+      var T = window.THREE;
+
+      var COL = { hub:'#3ddc97', workspace:'#dbe3f0', file:'#8a93a3', stale:'#f5b14c',
+                  decision:'#a78bfa', session:'#60a5fa', skill:'#f472b6', vector:'#b794f6' };
+      var R   = { hub:13, vector:8, workspace:6, skill:5, decision:5, session:4, file:3 };
+
+      // ---- dense sample web: parts of the Hermes OS (no real data) ----
+      var nodes = [], links = [], all = [];
+      function add(n){ nodes.push(n); all.push(n.id); return n.id; }
+      function L(sc,t,k){ links.push({ source:sc, target:t, kind:k }); }
+      add({ id:'core', kind:'hub', color:COL.hub, val:30 });
+
+      var SUB = ['Orpheus','Scribe','Athena','Mercury','The Alchemist','Dream Engine','Mission Control',
+                 'Guardian','Agent-Reach','Graphify','Voice','Telegram','soul.md','LLM Wiki'];
+      var FILES=['CLAUDE.md','soul.md','skill.md','memory.md','config.json','notes.md'];
+      var wsIds=[];
+      SUB.forEach(function(w,i){
+        var wid=add({ id:'ws'+i, kind:'workspace', color:COL.workspace, val:10 }); wsIds.push(wid);
+        L('core',wid,'core');
+        var nf=4+(i%3);
+        for(var f=0; f<nf; f++){ var st=((i*4+f)%9===0);
+          var fid=add({ id:wid+'f'+f, kind:'file', color: st?COL.stale:COL.file, val:3 }); L(wid,fid,'file'); }
+        var ns=1+(i%2);
+        for(var ssi=0; ssi<ns; ssi++){ var sid=add({ id:wid+'s'+ssi, kind:'session', color:COL.session, val:4 }); L(wid,sid,'session'); }
+      });
+      ['Pinecone','Obsidian','NotebookLM'].forEach(function(v,i){ var id=add({ id:'vs'+i, kind:'vector', color:COL.vector, val:14 }); L('core',id,'core'); });
+      var decN=8; for(var d=0; d<decN; d++){ var id=add({ id:'dec'+d, kind:'decision', color:COL.decision, val:6 }); L('core',id,'decision'); L(id,wsIds[d%wsIds.length],'cross'); }
+      var skN=10; for(var k=0; k<skN; k++){ var id=add({ id:'sk'+k, kind:'skill', color:COL.skill, val:6 }); L(id,wsIds[k%wsIds.length],'skill'); if(k%2===0) L(id,'core','skill'); }
+
+      // weave a real web: extra cross-links between non-core nodes
+      var pool = all.filter(function(x){ return x!=='core'; });
+      function pick(){ return pool[Math.floor(Math.random()*pool.length)]; }
+      for (var x=0; x<Math.floor(pool.length*0.9); x++){ var a=pick(), b=pick(); if(a!==b) L(a,b,'cross'); }
+
+      function glowNode(n){
+        var g=new T.Group(), r=R[n.kind]||3;
+        g.add(new T.Mesh(new T.SphereGeometry(r,18,18), new T.MeshBasicMaterial({ color:n.color, transparent:true, opacity:0.97 })));
+        g.add(new T.Mesh(new T.SphereGeometry(r*2.0,16,16), new T.MeshBasicMaterial({ color:n.color, transparent:true, opacity:0.16, blending:T.AdditiveBlending, depthWrite:false })));
+        if (n.kind==='hub'||n.kind==='vector') g.add(new T.Mesh(new T.SphereGeometry(r*3.4,16,16), new T.MeshBasicMaterial({ color:n.color, transparent:true, opacity:0.06, blending:T.AdditiveBlending, depthWrite:false })));
+        return g;
+      }
+      function linkColor(l){ return l.kind==='core'?'rgba(61,220,151,0.5)':l.kind==='session'?'rgba(96,165,250,0.32)'
+        :l.kind==='decision'?'rgba(167,139,250,0.35)':l.kind==='skill'?'rgba(244,114,182,0.35)'
+        :l.kind==='cross'?'rgba(123,224,200,0.22)':'rgba(180,190,210,0.14)'; }
+
+      var Graph = ForceGraph3D()(el)
+        .graphData({ nodes:nodes, links:links })
+        .backgroundColor('#000000')
+        .showNavInfo(false)
+        .enablePointerInteraction(false)
+        .enableNodeDrag(false)
+        .nodeThreeObject(glowNode)
+        .nodeVal(function(n){ return n.val; })
+        .linkColor(linkColor)
+        .linkWidth(function(l){ return l.kind==='core'?0.7:0.35; })
+        .linkOpacity(0.34)
+        .linkCurvature(function(l){ return l.kind==='cross'?0.3:(l.kind==='skill'?0.2:0); })
+        .linkDirectionalParticles(function(l){ return l.kind==='core'?4:(l.kind==='session'||l.kind==='skill'||l.kind==='cross')?1:0; })
+        .linkDirectionalParticleSpeed(function(l){ return l.kind==='session'?0.006:0.0035; })
+        .linkDirectionalParticleColor(function(l){ return l.kind==='skill'?'#f472b6':l.kind==='session'?'#60a5fa':l.kind==='cross'?'#7be0c8':'#3ddc97'; })
+        .linkDirectionalParticleWidth(1.5)
+        .warmupTicks(80).cooldownTicks(260)
+        .width(el.clientWidth).height(el.clientHeight);
+
+      try { Graph.d3Force('charge').strength(-70); Graph.d3Force('link').distance(30); } catch(e){}
+
+      // zoom IN so the network fills (and slightly overflows) the frame; very gentle drift
+      var dist = 360, angle = 0.6;
+      Graph.cameraPosition({ x: dist*Math.sin(angle), y: 20, z: dist*Math.cos(angle) });
+      setInterval(function(){ angle += Math.PI/2400; Graph.cameraPosition({ x: dist*Math.sin(angle), y: 20, z: dist*Math.cos(angle) }); }, 33);
+      window.addEventListener('resize', function(){ Graph.width(el.clientWidth).height(el.clientHeight); });
+    }
+    window.addEventListener('three-ready', init);
+    window.addEventListener('load', init);
+    init();
+  })();
+</script>
+<script>
+  // ===== Sticky-header scroll-spy: reliably highlight the section you're viewing =====
+  (function(){
+    var bar = document.querySelector('.toc-bar'); if (!bar) return;
+    var ids = ['part-1','part-2','part-3','part-4','part-5','part-6','part-7','part-8','part-9','part-10'];
+    var map = {};
+    [].forEach.call(bar.querySelectorAll('a[data-target]'), function(a){ map[a.dataset.target] = a; });
+    function spy(){
+      var y = window.scrollY + 150, cur = ids[0];
+      ids.forEach(function(id){ var el = document.getElementById(id); if (el && el.offsetTop <= y) cur = id; });
+      ids.forEach(function(id){ if (map[id]) map[id].classList.toggle('active', id === cur); });
+      var act = map[cur];
+      if (act) bar.scrollTo({ left: act.offsetLeft - bar.clientWidth/2 + act.clientWidth/2, behavior:'smooth' });
+    }
+    window.addEventListener('scroll', spy, { passive:true });
+    window.addEventListener('resize', spy);
+    spy();
+  })();
+</script>
+</body>
+</html>

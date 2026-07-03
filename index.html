@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nauka AI - Wybierz Ścieżkę</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #070810;
+    color: #f4f4f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+  }
+  .title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    margin-bottom: 40px;
+    letter-spacing: -0.04em;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .card {
+    background-color: #0f1119;
+    border: 1px solid #242838;
+    border-radius: 20px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: #60a5fa;
+  }
+  .card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .btn {
+    margin-top: 15px;
+    background: #ff6b35;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .card-claude:hover {
+    border-color: #ff6b35;
+  }
+  .card-claude .btn {
+    background: #ff6b35;
+  }
+  .card-hermes:hover {
+    border-color: #fbbf24;
+  }
+  .card-hermes .btn {
+    background: #fbbf24;
+    color: #000;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Wybierz swoją ścieżkę nauki</h1>
+    <div class="cards">
+      
+      <a href="CLOUDeindex.html" class="card card-claude">
+        <img src="https://claude-code-curriculum-deploy.vercel.app/logo.png" alt="Claude Code Logo">
+        <h2>Poznaj Claude Code</h2>
+        <div class="btn">Rozpocznij naukę</div>
+      </a>
+      
+      <a href="HERMEsindex.html" class="card card-hermes">
+        <img src="https://hermes-masterclass.vercel.app/hermes-assets/hermes-portrait.png" alt="Agent Hermes Logo">
+        <h2>Poznaj Agent Hermes</h2>
+        <div class="btn">Rozpocznij naukę</div>
+      </a>
+      
+    </div>
+  </div>
+</body>
+</html>

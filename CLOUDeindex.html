@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Claude Code FULL COURSE (Build &amp; Sell) — The Curriculum</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #070810;
+    --card: #0f1119;
+    --card-2: #131623;
+    --ui: #171a27;
+    --ui-2: #1b1e2c;
+    --border: #242838;
+    --border-2: #2e3244;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --dim: #6b7280;
+    --faint: #4b5563;
+    --claude: #ff6b35;
+    --claude-2: #ff8c5a;
+    --claude-glow: rgba(255, 107, 53, 0.3);
+
+    /* Per-part color tokens */
+    --p1: #a78bfa;  /* purple   — Foundation */
+    --p2: #fbbf24;  /* yellow   — Website */
+    --p3: #60a5fa;  /* blue     — Power Features */
+    --p4: #ef4444;  /* red      — Memory */
+    --p5: #f59e0b;  /* amber    — Hermes Agent */
+    --p6: #22c55e;  /* green    — Apps */
+    --p7: #f472b6;  /* pink     — Build Anything */
+    --p8: #d97706;  /* brown    — Design */
+    --p9: #ff6b35;  /* orange   — Compliance */
+    --p10: #facc15; /* gold     — Money */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: overlay;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(900px at 15% 5%, rgba(255, 107, 53, 0.06), transparent 60%),
+      radial-gradient(700px at 85% 80%, rgba(96, 165, 250, 0.05), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+  @keyframes breathe { 0%,100%{transform:scale(1);} 50%{transform:scale(1.025);filter:brightness(1.1);} }
+  @keyframes shimmerText { 0%{background-position:0%50%;} 100%{background-position:200%50%;} }
+  @keyframes scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* Wrap */
+  .wrap { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 32px 100px; }
+
+  /* HERO */
+  .hero { text-align: center; margin-bottom: 32px; animation: fadeInUp 0.9s ease-out; }
+  .hero-logo {
+    width: 88px; height: 88px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .hero-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .hero-mark {
+    width: min(480px, 80vw);
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    display: block;
+    margin: 22px auto 4px;
+    box-shadow: 0 0 60px rgba(255, 107, 53, 0.25), 0 14px 36px rgba(0,0,0,0.35),
+                inset 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .hero-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-mark svg { width: 52px; height: 52px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+
+  .hero-title {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    margin-bottom: 14px;
+  }
+  .hero-title .top {
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--text);
+  }
+  .hero-title .main {
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 900; letter-spacing: -0.04em; line-height: 0.95;
+    background: linear-gradient(135deg, var(--claude-2), #ffb787, var(--claude));
+    background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    animation: shimmerText 5s linear infinite;
+    white-space: nowrap;
+  }
+  .hero-title .sub {
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-style: italic; color: var(--muted); margin-top: 6px;
+  }
+  .hero-meta {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 10px 18px; background: rgba(255, 107, 53, 0.06);
+    border: 1px solid rgba(255, 107, 53, 0.22); border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-weight: 600; letter-spacing: 0.1em; color: var(--claude-2);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .hero-meta strong { color: var(--text); }
+
+  /* TOC sticky nav */
+  .toc-bar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(7, 8, 16, 0.85);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 24px -32px 48px;
+    padding: 14px 32px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-bar::-webkit-scrollbar { display: none; }
+  .toc-inner {
+    display: flex; align-items: center; gap: 8px;
+    max-width: 1200px; margin: 0 auto;
+    white-space: nowrap;
+  }
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    font-weight: 700; letter-spacing: 0.18em; color: var(--dim);
+    text-transform: uppercase; margin-right: 14px; flex-shrink: 0;
+  }
+  .toc-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px;
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .toc-chip:hover {
+    color: var(--text); border-color: var(--border-2); transform: translateY(-1px);
+  }
+  .toc-chip .chip-num {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    color: var(--accent, var(--claude));
+  }
+  .toc-chip[data-c="1"]  { --accent: var(--p1); }
+  .toc-chip[data-c="2"]  { --accent: var(--p2); }
+  .toc-chip[data-c="3"]  { --accent: var(--p3); }
+  .toc-chip[data-c="4"]  { --accent: var(--p4); }
+  .toc-chip[data-c="5"]  { --accent: var(--p5); }
+  .toc-chip[data-c="6"]  { --accent: var(--p6); }
+  .toc-chip[data-c="7"]  { --accent: var(--p7); }
+  .toc-chip[data-c="8"]  { --accent: var(--p8); }
+  .toc-chip[data-c="9"]  { --accent: var(--p9); }
+  .toc-chip[data-c="10"] { --accent: var(--p10); }
+
+  /* Marquee */
+  .marquee-wrap {
+    position: relative; margin: 0 -32px 56px; padding: 24px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .marquee-wrap::before, .marquee-wrap::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+  }
+  .marquee-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+  .marquee-wrap::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+  .marquee { display: flex; gap: 14px; width: max-content; animation: scroll 60s linear infinite; }
+  .marquee:hover { animation-play-state: paused; }
+  .brand-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 18px 10px 10px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 100px;
+    font-size: 13.5px; font-weight: 600; color: var(--text); white-space: nowrap;
+    transition: all 0.25s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .brand-chip:hover { border-color: var(--claude); transform: translateY(-1px); }
+  .brand-chip img { width: 26px; height: 26px; padding: 3px; border-radius: 7px;
+                   background: rgba(255,255,255,0.04); object-fit: contain; }
+  .brand-chip .em { width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center;
+                    font-size: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+                    border-radius: 7px; }
+
+  /* PART section */
+  .part {
+    margin-bottom: 56px;
+    opacity: 0; transform: translateY(28px);
+    scroll-margin-top: 90px;
+  }
+  .part.in-view { animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+  .part-head {
+    display: flex; align-items: center; gap: 18px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, color-mix(in oklab, var(--c) 18%, transparent), transparent);
+    border: 1px solid color-mix(in oklab, var(--c) 30%, var(--border));
+    border-radius: 16px;
+    margin-bottom: 22px;
+  }
+  .part-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 36px; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--c);
+    text-shadow: 0 0 24px color-mix(in oklab, var(--c) 40%, transparent);
+    line-height: 1; min-width: 80px;
+  }
+  .part-info { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+  .part-tools {
+    display: flex; align-items: center; gap: 6px; flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+  .part-tool {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 9px;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .part-tool:hover {
+    background: rgba(0,0,0,0.4);
+    border-color: color-mix(in oklab, var(--c) 60%, transparent);
+    transform: translateY(-1px);
+  }
+  .part-tool img { width: 18px; height: 18px; object-fit: contain; display: block; }
+  .part-tool .em { font-size: 16px; line-height: 1; }
+  .part-tool.compliance {
+    background: rgba(96,165,250,0.10);
+    border-color: rgba(96,165,250,0.35);
+    color: #93c5fd;
+  }
+  .part-tool.compliance svg { width: 16px; height: 16px; }
+  .part-tool::after {
+    content: attr(data-name);
+    position: absolute; bottom: calc(100% + 6px); left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    color: var(--text);
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    padding: 3px 7px; border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .part-tool:hover::after { opacity: 1; }
+  @media (max-width: 720px) {
+    .part-head { flex-wrap: wrap; }
+    .part-tools { max-width: 100%; justify-content: flex-start; margin-top: 8px; }
+  }
+  .part-info h2 {
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 800; letter-spacing: -0.02em; color: var(--text); line-height: 1.15;
+  }
+  .part-info .meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--dim); letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .part-info .meta strong { color: var(--c); margin-right: 4px; }
+
+  /* Outcome grid */
+  .out-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 1024px) { .out-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px)  { .out-grid { grid-template-columns: 1fr; } }
+
+  .out-card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    display: flex; flex-direction: column; gap: 10px;
+    min-height: 140px;
+  }
+  .out-card:hover {
+    border-color: color-mix(in oklab, var(--c) 50%, var(--border-2));
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px -10px color-mix(in oklab, var(--c) 30%, rgba(0,0,0,0.4));
+  }
+  .out-head { display: flex; align-items: baseline; gap: 10px; }
+  .out-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    color: var(--c);
+    flex-shrink: 0;
+    background: color-mix(in oklab, var(--c) 12%, transparent);
+    padding: 3px 8px; border-radius: 5px;
+  }
+  .out-title {
+    font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .out-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+  .out-card li {
+    font-size: 12.5px; color: var(--muted); line-height: 1.5;
+    padding-left: 14px; position: relative;
+  }
+  .out-card li::before {
+    content: '';
+    position: absolute; left: 0; top: 8px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: color-mix(in oklab, var(--c) 70%, var(--dim));
+  }
+  /* Brand logo chips inside lesson cards */
+  .card-stack {
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px dashed rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
+  .stack-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 8px 4px 5px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 999px;
+    font-size: 10.5px; font-weight: 600;
+    color: var(--muted); letter-spacing: 0.01em;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+  .stack-pill:hover {
+    background: rgba(255,107,53,0.07);
+    border-color: rgba(255,107,53,0.3);
+    color: var(--text);
+    transform: translateY(-1px);
+  }
+  .stack-pill img {
+    width: 13px; height: 13px; object-fit: contain;
+    display: block;
+  }
+  .stack-pill .em {
+    width: 13px; height: 13px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; line-height: 1;
+  }
+  .stack-pill.compliance {
+    background: rgba(96,165,250,0.06);
+    border-color: rgba(96,165,250,0.25);
+    color: #93c5fd;
+  }
+  .stack-pill.compliance:hover {
+    background: rgba(96,165,250,0.1);
+    border-color: rgba(96,165,250,0.45);
+    color: #dbeafe;
+  }
+  .stack-pill.compliance svg { width: 12px; height: 12px; }
+  .out-card code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    background: var(--ui-2); padding: 1px 5px; border-radius: 3px;
+    color: color-mix(in oklab, var(--c) 80%, var(--text));
+  }
+
+  /* Part connector line */
+  .part-connector {
+    width: 2px; height: 60px; margin: -8px auto 24px;
+    background: linear-gradient(180deg, var(--c-from), var(--c-to));
+    border-radius: 2px;
+    box-shadow: 0 0 18px color-mix(in oklab, var(--c-from) 50%, transparent);
+    opacity: 0.5;
+  }
+
+  /* Bonus files */
+  .bonus {
+    margin-top: 80px;
+    padding: 36px 36px 32px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.06), var(--card));
+    border: 1px solid rgba(255, 107, 53, 0.25);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bonus::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--claude), transparent);
+    opacity: 0.6;
+  }
+  .bonus-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .bonus-head h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+  .bonus-head .bag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; color: var(--claude); text-transform: uppercase;
+    padding: 3px 9px; background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.3); border-radius: 4px;
+  }
+  .bonus p { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; font-style: italic; }
+  .bonus-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  }
+  @media (max-width: 640px) { .bonus-grid { grid-template-columns: 1fr; } }
+  .bonus-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 13.5px; color: var(--text);
+    transition: all 0.2s;
+  }
+  .bonus-item:hover { border-color: rgba(255,107,53,0.4); background: rgba(255,107,53,0.04); transform: translateY(-1px); }
+  .bonus-check {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border: 1.5px solid var(--border-2);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    color: var(--claude);
+  }
+
+  /* ====== Memory Operating System — embedded tab ====== */
+  .mem-os {
+    position: relative;
+    margin: 0 0 18px;
+    padding: 16px 18px 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: linear-gradient(180deg, var(--card-2), var(--card));
+    overflow: hidden;
+  }
+  .mem-os-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 12px;
+  }
+  .mem-os-head-left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .mem-os-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    color: #4ade80; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid rgba(34,197,94,0.3);
+    border-radius: 999px;
+    background: rgba(34,197,94,0.06);
+  }
+  .mem-os-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #22c55e; box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .mem-os-title {
+    font-size: 14px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .mem-os-title .accent { color: #4ade80; }
+  .mem-os-stats {
+    display: inline-flex; gap: 14px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; color: var(--dim);
+  }
+  .mem-os-stats strong { color: var(--text); font-weight: 700; }
+
+  .mem-os-canvas {
+    position: relative;
+    height: 280px;
+    border: 1px solid var(--border-2);
+    border-radius: 10px;
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(34,197,94,0.08), transparent 65%),
+      #0a0c14;
+    overflow: hidden;
+  }
+  .mem-os-canvas::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  .mem-edges {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .mem-edges line { stroke: rgba(255,255,255,0.12); stroke-width: 1; fill: none; }
+  .mem-edges line.active { stroke: rgba(255,107,53,0.55); stroke-width: 1.3; filter: drop-shadow(0 0 4px rgba(255,107,53,0.55)); }
+  .mem-edges line.warm   { stroke: rgba(251,191,36,0.4); stroke-width: 1.1; filter: drop-shadow(0 0 3px rgba(251,191,36,0.35)); }
+
+  /* Memory Core */
+  .mem-core {
+    position: absolute; top: 50%; left: 50%;
+    width: 56px; height: 56px;
+    margin: -28px 0 0 -28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #86efac, #15803d);
+    box-shadow:
+      0 0 0 2px rgba(34,197,94,0.18),
+      0 0 36px rgba(34,197,94,0.55),
+      0 0 80px rgba(34,197,94,0.25);
+    z-index: 5;
+    animation: corePulse 3.2s ease-in-out infinite;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800; color: rgba(0,0,0,0.55);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  @keyframes corePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+
+  /* Workspace nodes (logo discs) */
+  .mem-ws {
+    position: absolute;
+    width: 34px; height: 34px;
+    margin: -17px 0 0 -17px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff3c4, #1a1d2a);
+    box-shadow:
+      0 0 0 1.5px rgba(251,191,36,0.5),
+      0 0 18px rgba(251,191,36,0.45);
+    z-index: 3;
+    animation: wsBob 6s ease-in-out infinite;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .mem-ws.lg { width: 42px; height: 42px; margin: -21px 0 0 -21px; box-shadow: 0 0 0 1.5px rgba(251,191,36,0.55), 0 0 24px rgba(251,191,36,0.55); }
+  .mem-ws img {
+    width: 60%; height: 60%; object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+  }
+  .mem-ws .em { font-size: 16px; line-height: 1; }
+  .mem-ws.lg .em { font-size: 20px; }
+  @keyframes wsBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+  .mem-ws-label {
+    position: absolute; top: calc(100% + 4px); left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600;
+    color: rgba(251,191,36,0.85);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  }
+
+  /* File nodes (diamonds) */
+  .mem-file {
+    position: absolute;
+    width: 10px; height: 10px;
+    margin: -5px 0 0 -5px;
+    background: #a78bfa;
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px rgba(167,139,250,0.6);
+    z-index: 2;
+  }
+  .mem-file.dim { background: #6b7280; box-shadow: 0 0 6px rgba(107,114,128,0.4); }
+  .mem-file-label {
+    position: absolute;
+    transform: rotate(-45deg) translate(14px, -2px);
+    transform-origin: top left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: rgba(167,139,250,0.85);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .mem-os-legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-top: 12px;
+    font-size: 10px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;
+  }
+  .mem-os-legend .item { display: inline-flex; align-items: center; gap: 6px; }
+  .mem-os-legend .sw { width: 8px; height: 8px; border-radius: 50%; }
+  .mem-os-legend .sw.diamond { transform: rotate(45deg); border-radius: 1px; }
+  .mem-os-legend .sw.line { width: 14px; height: 2px; border-radius: 0; }
+
+  @media (max-width: 720px) {
+    .mem-os-canvas { height: 240px; }
+    .mem-ws-label { display: none; }
+    .mem-file-label { display: none; }
+  }
+
+  /* ====== Unlock Now CTA ====== */
+  .unlock-section {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    opacity: 0; animation: fadeIn 0.9s ease 0.2s forwards;
+  }
+  .unlock-avatar {
+    width: 260px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow:
+      0 18px 40px -14px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(255,255,255,0.04) inset;
+    margin-bottom: 6px;
+  }
+  @property --unlock-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .unlock-cta {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    padding: 34px 56px;
+    max-width: 720px; width: 100%;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 0;
+    background:
+      radial-gradient(55% 80% at 12% 0%,  rgba(167,139,250,0.18), transparent 70%),
+      radial-gradient(55% 80% at 88% 0%,  rgba(96,165,250,0.18),  transparent 70%),
+      radial-gradient(65% 85% at 50% 110%, rgba(255,107,53,0.16), transparent 70%),
+      radial-gradient(40% 60% at 50% 50%, rgba(134,239,172,0.06), transparent 75%),
+      linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+    box-shadow:
+      0 22px 60px -22px rgba(167,139,250,0.32),
+      0 22px 60px -22px rgba(96,165,250,0.24),
+      0 14px 40px -18px rgba(255,107,53,0.30),
+      0 14px 40px -18px rgba(251,113,133,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* Rotating multicolor gradient border */
+  .unlock-cta::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from var(--unlock-angle, 0deg),
+      #A78BFA 0deg,
+      #60A5FA 60deg,
+      #34D399 120deg,
+      #FCD34D 180deg,
+      #FB7185 240deg,
+      #F472B6 300deg,
+      #A78BFA 360deg);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+            mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+    filter: saturate(1.1);
+    animation: unlock-spin 8s linear infinite;
+  }
+  @keyframes unlock-spin {
+    to { --unlock-angle: 360deg; }
+  }
+  /* Inner hover-glow stays as ::before */
+  .unlock-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(40% 60% at 30% 120%, rgba(167,139,250,0.22), transparent 70%),
+      radial-gradient(40% 60% at 70% 120%, rgba(96,165,250,0.22),  transparent 70%);
+    opacity: 0; transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .unlock-cta:hover {
+    transform: translateY(-3px);
+    filter: saturate(1.05) brightness(1.03);
+    box-shadow:
+      0 28px 70px -20px rgba(167,139,250,0.48),
+      0 28px 70px -20px rgba(96,165,250,0.36),
+      0 18px 50px -18px rgba(255,107,53,0.40),
+      0 18px 50px -18px rgba(251,113,133,0.28),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .unlock-cta:hover::after { animation-duration: 4s; }
+  .unlock-cta:hover::before { opacity: 1; }
+  .unlock-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    color: var(--claude); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .unlock-eyebrow .pulse-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--claude);
+    box-shadow: 0 0 12px rgba(255,107,53,0.8);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .unlock-title {
+    font-size: 36px; font-weight: 800;
+    color: var(--text); letter-spacing: -0.02em;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .unlock-title .arrow {
+    color: var(--claude);
+    transition: transform 0.3s ease;
+  }
+  .unlock-cta:hover .unlock-title .arrow { transform: translateX(6px); }
+  .unlock-lede {
+    font-size: 17px; font-weight: 600;
+    color: var(--text); text-align: center;
+    line-height: 1.45; letter-spacing: -0.01em;
+    max-width: 540px;
+    background: linear-gradient(90deg, #A78BFA, #FFFFFF 45%, #FFB071);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .unlock-plus {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    font-size: 15.5px; font-weight: 600;
+    color: var(--text); text-align: center;
+    line-height: 1.45; letter-spacing: -0.01em;
+    max-width: 540px;
+  }
+  .unlock-plus .plus-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--claude);
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(255,107,53,0.10);
+    border: 1px solid rgba(255,107,53,0.30);
+    transform: translateY(-1px);
+  }
+  .unlock-sub {
+    font-size: 14.5px; color: var(--muted);
+    text-align: center; line-height: 1.55;
+    max-width: 520px;
+  }
+  .unlock-sub strong { color: var(--text); font-weight: 700; }
+  @media (max-width: 640px) {
+    .unlock-cta { padding: 24px 24px; }
+    .unlock-title { font-size: 28px; }
+  }
+
+  /* ====== Full Stack Logo Gallery ====== */
+  .stack-section {
+    margin-top: 72px;
+    margin-bottom: 8px;
+    padding: 36px 28px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background:
+      radial-gradient(80% 60% at 50% 0%, rgba(255,107,53,0.06), transparent 60%),
+      linear-gradient(180deg, var(--card-2), var(--card));
+    opacity: 0; animation: fadeIn 1s ease 0.4s forwards;
+  }
+  .stack-head { text-align: center; margin-bottom: 26px; }
+  .stack-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600; color: var(--claude);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,107,53,0.3);
+    border-radius: 999px;
+    background: rgba(255,107,53,0.06);
+  }
+  .stack-title {
+    font-size: 30px; font-weight: 800;
+    color: var(--text); letter-spacing: -0.02em;
+    margin-top: 14px; line-height: 1.15;
+  }
+  .stack-title .accent { color: var(--claude); }
+  .stack-sub {
+    font-size: 14px; color: var(--muted);
+    max-width: 540px; margin: 10px auto 0; line-height: 1.55;
+  }
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .stack-tile {
+    position: relative;
+    padding: 18px 10px 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .stack-tile:hover {
+    border-color: var(--claude);
+    background: rgba(255,107,53,0.05);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,107,53,0.15);
+  }
+  .stack-tile img {
+    width: 36px; height: 36px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  }
+  .stack-tile .em {
+    width: 36px; height: 36px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 28px; line-height: 1;
+  }
+  .stack-tile .label {
+    font-size: 11.5px; font-weight: 600;
+    color: var(--text); text-align: center;
+    letter-spacing: 0.01em;
+  }
+
+  /* Footer — Skool community card */
+  .skool-card {
+    margin-top: 72px;
+    position: relative;
+    padding: 44px 40px 40px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(255,107,53,0.10), transparent 55%),
+      radial-gradient(120% 140% at 100% 100%, rgba(255,107,53,0.08), transparent 55%),
+      linear-gradient(180deg, var(--card-2), var(--card));
+    overflow: hidden;
+    opacity: 0; animation: fadeIn 1s ease 0.8s forwards;
+  }
+  .skool-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,107,53,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,107,53,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    pointer-events: none;
+  }
+  .skool-card > * { position: relative; z-index: 1; }
+
+  .skool-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    color: var(--claude);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid rgba(255,107,53,0.35);
+    border-radius: 999px;
+    background: rgba(255,107,53,0.08);
+    margin-bottom: 18px;
+  }
+  .skool-eyebrow .dot {
+    width: 6px; height: 6px; background: var(--claude); border-radius: 50%;
+    box-shadow: 0 0 10px var(--claude); animation: pulse 2s ease-in-out infinite;
+  }
+
+  .skool-title {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--text); line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .skool-title .accent { color: var(--claude); }
+  .skool-sub {
+    font-size: 15px; color: var(--muted); line-height: 1.5;
+    max-width: 620px;
+    margin-bottom: 28px;
+  }
+
+  .skool-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .skool-stat {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  .skool-stat:hover {
+    border-color: rgba(255,107,53,0.4);
+    background: rgba(255,107,53,0.04);
+    transform: translateY(-2px);
+  }
+  .skool-stat-icon {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(255,107,53,0.10);
+    border: 1px solid rgba(255,107,53,0.25);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--claude);
+  }
+  .skool-stat-icon svg { width: 18px; height: 18px; }
+  .skool-stat-icon.avatar {
+    background: transparent; border: 1.5px solid rgba(255,107,53,0.5);
+    overflow: hidden; padding: 0;
+  }
+  .skool-stat-icon.avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .skool-stat-text {
+    display: flex; flex-direction: column; min-width: 0;
+  }
+  .skool-stat-label {
+    font-size: 11px; color: var(--dim);
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+  }
+  .skool-stat-value {
+    font-size: 15px; color: var(--text); font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ====== Skool-style feed (light cards on dark) ====== */
+  .skool-feed-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    margin: 8px 0 16px;
+  }
+  .skool-feed-title {
+    font-size: 13px; font-weight: 700;
+    color: var(--text); letter-spacing: 0.02em;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .skool-feed-title::before { content: ''; width: 24px; height: 1px; background: var(--claude); }
+  .skool-feed-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--dim);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  .skool-marquee {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -28px 32px;
+    padding: 8px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+  }
+  .skool-feed {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 14px;
+    width: max-content;
+    padding: 0 28px;
+    animation: skool-scroll 90s linear infinite;
+  }
+  .skool-marquee:hover .skool-feed { animation-play-state: paused; }
+  .skool-feed .skool-post {
+    width: 320px;
+    flex-shrink: 0;
+    height: auto;
+    align-self: flex-start;
+  }
+  .skool-feed .skool-post .skool-actions { display: none; }
+  @keyframes skool-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-50% - 7px)); }
+  }
+
+  .skool-post {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+    color: #1F1F1F;
+    font-family: 'Roboto', -apple-system, sans-serif;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .skool-post:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+  }
+
+  .skool-post-header {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .skool-avatar {
+    position: relative;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    overflow: visible;
+    flex-shrink: 0;
+  }
+  .skool-avatar .photo {
+    position: relative;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 13px; letter-spacing: 0.02em;
+    font-family: 'Roboto', sans-serif;
+  }
+  .skool-avatar .photo > span {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .skool-avatar .photo img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .skool-level {
+    position: absolute;
+    bottom: -2px; left: -3px;
+    min-width: 18px; height: 18px; padding: 0 4px;
+    background: #4A6BF5;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: #fff;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .skool-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .skool-name { font-size: 14px; font-weight: 700; color: #1F1F1F; line-height: 1.2; }
+  .skool-when {
+    font-size: 12px; color: #717171; line-height: 1.4;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .skool-when .dot { color: #BDBDBD; }
+
+  .skool-icons {
+    display: inline-flex; align-items: center; gap: 12px;
+    color: #B0B0B0;
+  }
+  .skool-icons svg { width: 16px; height: 16px; display: block; }
+
+  .skool-title {
+    font-size: 18px; font-weight: 700; color: #1F1F1F;
+    line-height: 1.3; margin: -2px 0 0;
+  }
+  .skool-body {
+    font-size: 14px; color: #2D2D2D; line-height: 1.55;
+  }
+  .skool-body .mention { color: #1B66F0; }
+
+  .skool-actions {
+    margin-top: auto;
+    padding-top: 4px;
+    display: flex; align-items: center; gap: 18px;
+    font-size: 13px; color: #717171;
+  }
+  .skool-actions .item {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 8px; border-radius: 8px;
+  }
+  .skool-actions svg { width: 16px; height: 16px; }
+
+  @media (max-width: 620px) {
+    .skool-feed .skool-post { width: 280px; }
+  }
+
+  .skool-cta-row {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; flex-wrap: wrap; text-align: center;
+    margin-top: 8px;
+  }
+  .skool-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    background: var(--claude);
+    color: #fff !important;
+    font-size: 15px; font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(255,107,53,0.25);
+  }
+  .skool-cta:hover {
+    background: var(--claude-2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255,107,53,0.35);
+  }
+  .skool-cta .arrow { transition: transform 0.2s ease; }
+  .skool-cta:hover .arrow { transform: translateX(4px); }
+
+  .skool-note {
+    font-size: 13px; color: var(--dim);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .skool-note .pulse-dot {
+    width: 6px; height: 6px; background: #22c55e; border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34,197,94,0.6); animation: pulse 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 720px) {
+    .skool-card { padding: 32px 24px; }
+    .skool-title { font-size: 24px; }
+    .skool-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .footer {
+    margin-top: 32px; padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+    opacity: 0; animation: fadeIn 1s ease 1s forwards;
+  }
+  .footer-sig { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--dim); letter-spacing: 0.1em; }
+  .footer-pin {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--claude); font-weight: 600;
+  }
+  .footer-pin .dot {
+    width: 6px; height: 6px; background: var(--claude); border-radius: 50%;
+    box-shadow: 0 0 10px var(--claude); animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* Back to top */
+  .back-top {
+    position: fixed; bottom: 28px; right: 28px; z-index: 60;
+    width: 44px; height: 44px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
+    color: var(--muted); font-size: 16px;
+    text-decoration: none;
+  }
+  .back-top.visible { opacity: 1; pointer-events: auto; }
+  .back-top:hover { border-color: var(--claude); color: var(--claude); transform: translateY(-3px); }
+
+  /* ===== cross-site toggle (DRAFT) ===== */
+  .site-switch{ position:sticky; top:0; z-index:90; display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:11px 14px; background:rgba(7,8,16,0.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border); }
+  .site-switch .ss-label{ font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--dim); margin-right:6px; }
+  .ss-pill{ display:inline-flex; align-items:center; gap:7px; padding:8px 20px; border-radius:100px;
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    text-decoration:none; color:var(--muted); border:1px solid var(--border); background:rgba(255,255,255,0.03); transition:all .2s; }
+  .ss-pill:hover{ color:var(--text); border-color:var(--border-2); transform:translateY(-1px); }
+  .ss-pill.active{ color:#fff; cursor:default; background:#ff6b35; border-color:#ff6b35; box-shadow:0 6px 20px rgba(255,107,53,0.4); }
+  .ss-pill .dotmark{ width:7px; height:7px; border-radius:50%; background:currentColor; opacity:0.85; }
+  .toc-bar{ top:46px; }
+
+</style>
+</head>
+<body>
+<!-- cross-site toggle -->
+<div class="wrap">
+<!-- HERO -->
+<!-- STICKY TOC -->
+
+<div style="text-align:center; padding: 60px 20px 20px; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 10;">
+<div class="hero-logo" style="width: 88px; height: 88px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 24px;">
+<img alt="Logo" src="https://claude-code-curriculum-deploy.vercel.app/logo.png" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+</div>
+<h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 900; letter-spacing: -0.04em; color: var(--text);">Jak zacząć z Claude Code</h1>
+</div>
+<nav class="toc-bar">
+<div class="toc-inner">
+<span class="toc-label">Przejdź do</span>
+<a class="toc-chip" data-c="1" href="#part-1"><span class="chip-num">01</span> Podstawy</a>
+<a class="toc-chip" data-c="2" href="#part-2"><span class="chip-num">02</span> Strona</a>
+<a class="toc-chip" data-c="3" href="#part-3"><span class="chip-num">03</span> Funkcje Premium</a>
+<a class="toc-chip" data-c="4" href="#part-4"><span class="chip-num">04</span> Pamięć</a>
+<a class="toc-chip" data-c="5" href="#part-5"><span class="chip-num">05</span> Agent Hermes</a>
+<a class="toc-chip" data-c="6" href="#part-6"><span class="chip-num">06</span> Aplikacje</a>
+<a class="toc-chip" data-c="7" href="#part-7"><span class="chip-num">07</span> Zbuduj Cokolwiek</a>
+<a class="toc-chip" data-c="8" href="#part-8"><span class="chip-num">08</span> Design</a>
+<a class="toc-chip" data-c="9" href="#part-9"><span class="chip-num">09</span> Zgodność</a>
+<a class="toc-chip" data-c="10" href="#part-10"><span class="chip-num">10</span> $$$</a>
+<a class="toc-chip" data-c="9" href="#part-9"><span class="chip-num">★</span> Pliki Bonusowe</a>
+</div>
+</nav>
+<!-- LOGO MARQUEE -->
+<div class="marquee-wrap">
+<div class="marquee" id="marquee"></div>
+</div>
+ CZĘŚĆ 1 — PODSTAWY + KONFIGURACJA 
+<section class="part" id="part-1" style="--c: var(--p1);">
+<div class="part-head">
+<div class="part-num">01</div>
+<div class="part-info">
+<h2>Podstawy + Konfiguracja</h2>
+<div class="meta"><strong>11 lekcji</strong> · ~30 min · instalacja → CLAUDE.md → Tryb Planowania</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">1.1</span><span class="out-title">Instalacja Claude Code</span></div><ul><li>Pobieranie aplikacji desktopowej</li><li>Ścieżka instalacji w terminalu</li><li>Pierwsze uruchomienie + klucz API</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.2</span><span class="out-title">Przegląd interfejsu</span></div><ul><li>Pasek boczny + ustawienia</li><li>Terminal vs GUI</li><li>Antigravity vs VS Code</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.3</span><span class="out-title">Free vs Pro vs Max</span></div><ul><li>Co oferuje każdy plan</li><li>Którego naprawdę potrzebujesz</li><li>Kiedy przejść na wyższy plan</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.4</span><span class="out-title">Tryby uprawnień</span></div><ul><li>Przed Edycją (bezpieczna domyślna)</li><li>Edytuj Automatycznie (szybkość)</li><li>Pomiń (tylko live builds)</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.5</span><span class="out-title">5 płaszczyzn Claude</span></div><ul><li>Czat · Cowork · Claude Code</li><li>Zarządzane Agenty · API</li><li>Kiedy po co sięgać</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.6</span><span class="out-title">Codzienne komendy slash</span></div><ul><li><code>/context</code> <code>/compact</code> <code>/clear</code></li><li><code>/model</code> <code>/cost</code></li><li>Drzewo decyzyjne dla każdego</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.7</span><span class="out-title">Zorganizuj swój pulpit</span></div><ul><li>Zapytaj Claude, nad czym pracujesz</li><li>Autotworzenie struktury folderów</li><li>30 sekund i gotowe</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.8</span><span class="out-title">Podłącz swoje narzędzia</span></div><ul><li>Supabase, Gmail, Pinecone</li><li>YouTube, Notion, Drive</li><li>Kiedy zbudować niestandardowy konektor</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.9</span><span class="out-title">Struktura folderów</span></div><ul><li>Sztywne foldery: Code vs Cowork</li><li>Gdzie mieszkają Skille</li><li>Gdzie trafia CLAUDE.md</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.10</span><span class="out-title">Kopia zapasowa Git + GitHub</span></div><ul><li>Dlaczego tego potrzebujesz od 1. dnia</li><li>2-minutowa konfiguracja</li><li>Bitwarden dla haseł</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">1.11</span><span class="out-title">CLAUDE.md + Tryb Planowania</span></div><ul><li>Dwa największe przełomy</li><li>Przejście przez mój produkcyjny CLAUDE.md</li><li>Demo Trybu Planowania na żywo</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p1); --c-to: var(--p2);"></div>
+ CZĘŚĆ 2 — STRONA 
+<section class="part" id="part-2" style="--c: var(--p2);">
+<div class="part-head">
+<div class="part-num">02</div>
+<div class="part-info">
+<h2>Zbuduj Prawdziwą Stronę (Od Zera Do Wdrożenia)</h2>
+<div class="meta"><strong>10 lekcji</strong> · 3-etapowy system: Wywiad Konkurencji → Design → Hosting</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">2.1</span><span class="out-title">3-etapowy system stron</span></div><ul><li>Wywiad Konkurencji → Design → Hosting</li><li>Dlaczego spec-first zawsze wygrywa</li><li>Co tak naprawdę dziś budujemy</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.2</span><span class="out-title">Scrapowanie konkurencji</span></div><ul><li>Wybierz cele · scrapuj z Firecrawl + Apify</li><li>Zrzut struktury + teksty + stylizacja</li><li>Zamień scrape na ustrukturyzowany output dla Claude</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.3</span><span class="out-title">Ustrukturyzowany brief designu</span></div><ul><li>Research → specyfikacja</li><li>Czego Claude naprawdę potrzebuje</li><li>Szablon briefu (dla Ciebie)</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.4</span><span class="out-title">Skill UI UX Pro Max</span></div><ul><li>Co robi ten Skill</li><li>Uruchomienie na żywo</li><li>Zostaje dla Ciebie</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.5</span><span class="out-title">Równolegli agenci</span></div><ul><li>Buduj 3 wersje na raz</li><li>Porównaj bok w bok</li><li>Wybierz i iteruj</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.6</span><span class="out-title">SEO wbudowane w kod</span></div><ul><li>Znaczniki Meta + schema</li><li>Mapa strony + robots.txt</li><li>Core Web Vitals</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.7</span><span class="out-title">Snajperstwo UI</span></div><ul><li>Kradnij sprawdzone wzorce</li><li>Które strony analizować</li><li>Jak adaptować bez kopiowania</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.8</span><span class="out-title">Wdrożenie na Vercel</span></div><ul><li>Podłączenie repozytorium</li><li>Zmienne środowiskowe</li><li>Live URL przed kamerą</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.9</span><span class="out-title">Weryfikacja pracy Claude</span></div><ul><li>Błąd nr 1 początkujących</li><li>Co i kiedy sprawdzać</li><li>Jak odrzucać złe wyniki</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">2.10</span><span class="out-title">Debuguj jak profesjonalista</span></div><ul><li>Najpierw przeczytaj błąd</li><li>Wzorce Git stash + reset</li><li>Ponowny prompt z kontekstem</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p2); --c-to: var(--p3);"></div>
+ CZĘŚĆ 3 — FUNKCJE PREMIUM 
+<section class="part" id="part-3" style="--c: var(--p3);">
+<div class="part-head">
+<div class="part-num">03</div>
+<div class="part-info">
+<h2>Funkcje Premium</h2>
+<div class="meta"><strong>12 lekcji</strong> · Skille, Hooki, MCP, Subagenci, Pętla Krytyka, Dispatch</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">3.1</span><span class="out-title">Skille od podstaw</span></div><ul><li>Czym tak naprawdę są Skille</li><li>Struktura SKILL.md</li><li>Twój pierwszy działający Skill</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.2</span><span class="out-title">Rynki Skilli + bezpieczeństwo</span></div><ul><li>Cowork + skills.sh</li><li>Co instalować (a czego nie)</li><li>Checklista bezpieczeństwa</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.3</span><span class="out-title">Zbuduj własny Skill</span></div><ul><li>Walkthrough na żywo</li><li>Zostaje dla Ciebie</li><li>Wzorce wielokrotnego użytku</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.4</span><span class="out-title">Zarządzanie tokenami</span></div><ul><li>Ile to naprawdę kosztuje</li><li>Routowanie modeli (Opus/Sonnet/Haiku)</li><li>Efektywność Claude vs Codex</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.5</span><span class="out-title">Gnicie kontekstu wyjaśnione</span></div><ul><li>Gdy konwersacje idą źle</li><li><code>/compact</code> vs <code>/clear</code> drzewo decyzyjne</li><li>Krótkie, skupione sesje zawsze wygrywają</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.6</span><span class="out-title">Procedury (Agenci 24/7)</span></div><ul><li>Czym są procedury</li><li>Budowa pierwszej z nich</li><li>Prawdziwe przypadki użycia</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.7</span><span class="out-title">Automatyzacja Hooków</span></div><ul><li>Wywołania narzędzi Pre/post</li><li>Auto-format, auto-test</li><li>Demo formularza kontaktowego na żywo</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.8</span><span class="out-title">MCP prostym językiem</span></div><ul><li>Czym właściwie jest MCP</li><li>Gotowe vs Niestandardowe</li><li>Dlaczego tego potrzebujesz</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.9</span><span class="out-title">Zbuduj własne MCP</span></div><ul><li>Budowa serwera na żywo</li><li>Wdróż i udostępnij</li><li>Podłącz do Claude Code</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.10</span><span class="out-title">Subagenci + worktree</span></div><ul><li>Deleguj skupioną pracę</li><li>Równoległe budowanie bez konfliktów</li><li>Kiedy używać każdego</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.11</span><span class="out-title">Autonomiczna pętla krytyka</span></div><ul><li>Wzorzec LLM-jako-sędzia</li><li>Samokorygujące wyniki</li><li>Zaawansowana orkiestracja</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">3.12</span><span class="out-title">Dispatch · Harmonogram · Wtyczki</span></div><ul><li>Dispatch (nowy sposób)</li><li>Zaplanowane zadania</li><li>Rynek Wtyczek</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p3); --c-to: var(--p4);"></div>
+ CZĘŚĆ 4 — PAMIĘĆ 
+<section class="part" id="part-4" style="--c: var(--p4);">
+<div class="part-head">
+<div class="part-num">04</div>
+<div class="part-info">
+<h2>System Pamięci</h2>
+<div class="meta"><strong>6 lekcji</strong> · Pinecone + NotebookLM + Granola + Obsidian RAG — 3 poziomy przypominania</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">4.1</span><span class="out-title">3 poziomy pamięci</span></div><ul><li>Kontekst (teraz)</li><li>Projekt (per-projekt)</li><li>Długoterminowa (na zawsze)</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.2</span><span class="out-title">NotebookLM</span></div><ul><li>Wiedza, która zostaje</li><li>Odkrywaj wszystko co stworzyłeś</li><li>Przeglądy Audio jako bonus</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.3</span><span class="out-title">Pinecone</span></div><ul><li>Pamięć wektorowa, nieskończone przypominanie</li><li>Podłącz do Claude Code</li><li>Prawdziwe zapytania przed kamerą</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.4</span><span class="out-title">Spotkania Granola</span></div><ul><li>Auto-transkrypcja każdej rozmowy</li><li>Zamień spotkania w pamięć</li><li>Przeszukuj to, co zostało powiedziane</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.5</span><span class="out-title">Pamięć folderów CSV</span></div><ul><li>Ustrukturyzowane długoterminowe dane</li><li>Claude pyta to bezpośrednio</li><li>Kiedy to bije Pinecone</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">4.6</span><span class="out-title">Obsidian RAG (Karpathy)</span></div><ul><li>Skarbiec-jako-drugi-mózg, w pełni lokalnie</li><li>Osadzaj notatki, przeszukuj z Claude</li><li>Workflow Karpathy'ego, krok po kroku</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p4); --c-to: var(--p5);"></div>
+ CZĘŚĆ 5 — AGENT HERMES 
+<section class="part" id="part-5" style="--c: var(--p5);">
+<div class="part-head">
+<div class="part-num">05</div>
+<div class="part-info">
+<h2>Agent Hermes</h2>
+<div class="meta"><strong>2 lekcje</strong> · zbuduj własnego AI operatora i podepnij pod pamięć</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">5.1</span><span class="out-title">Zbuduj swojego agenta Hermes</span></div><ul><li>Czym jest Hermes agent</li><li>Dlaczego powinieneś go mieć</li><li>Jak zbudować</li><li>Połącz do systemu pamięci</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">5.2</span><span class="out-title">Połącz do systemu pamięci</span></div><ul><li>Podepnij Hermesa do Pinecone</li><li>Ujednolicony interfejs</li><li>Przeszukuj cokolwiek ze źródeł</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p5); --c-to: var(--p6);"></div>
+ CZĘŚĆ 6 — APLIKACJE 
+<section class="part" id="part-6" style="--c: var(--p6);">
+<div class="part-head">
+<div class="part-num">06</div>
+<div class="part-info">
+<h2>Aplikacje</h2>
+<div class="meta"><strong>5 lekcji</strong> · Framework BLAST + płatności Stripe + auth + email Resend</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">6.1</span><span class="out-title">Architektura aplikacji</span></div><ul><li>Front-end</li><li>Back-end (DB, auth, API)</li><li>Automatyzacje + integracje</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.2</span><span class="out-title">Framework BLAST</span></div><ul><li>Co oznacza BLAST</li><li>Kiedy używać</li><li>Walkthrough na żywo</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.3</span><span class="out-title">Procesy logowania</span></div><ul><li>Modal + Procedury Claude</li><li>Auth, które naprawdę działa</li><li>Wzorce zarządzania użytkownikami</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.4</span><span class="out-title">Marketing email Resend</span></div><ul><li>Podłącz Resend w minuty</li><li>Emaile transakcyjne + masowe</li><li>Złap leady · odpal sekwencje</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">6.5</span><span class="out-title">Płatności Stripe</span></div><ul><li>Podłącz Stripe</li><li>Płatność na żywo przed kamerą</li><li>Zarządzaj rzadkimi przypadkami</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p6); --c-to: var(--p7);"></div>
+ CZĘŚĆ 7 — ZBUDUJ COKOLWIEK 
+<section class="part" id="part-7" style="--c: var(--p7);">
+<div class="part-head">
+<div class="part-num">07</div>
+<div class="part-info">
+<h2>Zbuduj Cokolwiek</h2>
+<div class="meta"><strong>3 lekcje</strong> · pierwsze zasady · pipeline lead-gen · stack agencji marketingowej</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">7.1</span><span class="out-title">Projekt systemu first-principles</span></div><ul><li>Framework Muska</li><li>Rozbij każdy problem na czynniki</li><li>Odbuduj to systematycznie</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.2</span><span class="out-title">Scrapowanie leadów → Instantly</span></div><ul><li>Znajdź cele z Apify + Firecrawl</li><li>Wzbogać dane z Claude</li><li>Wypuść do Instantly w minuty</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">7.3</span><span class="out-title">Stack agencji marketingowej</span></div><ul><li>Pełny setup agencji</li><li>Proces dostarczania klientom</li><li>Pakowanie pod skalowanie</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p7); --c-to: var(--p8);"></div>
+ CZĘŚĆ 8 — DESIGN SYSTEMS 
+<section class="part" id="part-8" style="--c: var(--p8);">
+<div class="part-head">
+<div class="part-num">08</div>
+<div class="part-info">
+<h2>Systemy Designu</h2>
+<div class="meta"><strong>7 lekcji</strong> · Design Claude Code · Prezentacje HTML · 3D · wideo · zdjęcia · loga</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">8.1</span><span class="out-title">Design Claude Code <span style="background:rgba(255,107,53,0.15);color:var(--claude);font-size:9px;font-weight:800;letter-spacing:0.1em;padding:2px 6px;border-radius:3px;margin-left:6px;text-transform:uppercase;">Nowy</span></span></div><ul><li>Zupełnie nowa opcja designu</li><li>Kiedy używać tego, a kiedy Figma / Stitch</li><li>Przejście przez design na żywo</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.2</span><span class="out-title">Prezentacje HTML</span></div><ul><li>Takie jak ten zeszyt</li><li>Animacje wbudowane</li><li>Eksportuj i dziel się</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.3</span><span class="out-title">Animowane grafiki</span></div><ul><li>Wrzuć na dowolną stronę</li><li>CSS-only + wzorce GSAP</li><li>Ruch, który konwertuje</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.4</span><span class="out-title">Spline 3D</span></div><ul><li>Kiedy 3D się opłaca</li><li>Koszty wydajności</li><li>Przejście przez integrację</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.5</span><span class="out-title">ElevenLabs + Higgsfield</span></div><ul><li>Generacja głosu</li><li>Generacja wideo</li><li>Połączony pipeline</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.6</span><span class="out-title">Zdjęcia Nano Banana</span></div><ul><li>Najlepsze wzorce promptów</li><li>Workflow produkcyjny</li><li>Kontrola jakości</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">8.7</span><span class="out-title">Auto-pobieranie zasobów marki</span></div><ul><li>Zeskanuj logo z URL z Firecrawl</li><li>Buduj bibliotekę live w minuty</li><li>Wrzuć prosto do swoich kompilacji (tak jak tę stronę)</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p8); --c-to: var(--p9);"></div>
+ CZĘŚĆ 9 — ZGODNOŚĆ 
+<section class="part" id="part-9" style="--c: var(--p9);">
+<div class="part-head">
+<div class="part-num">09</div>
+<div class="part-info">
+<h2>Zgodność i Utrzymanie</h2>
+<div class="meta"><strong>5 lekcji</strong> · HIPAA · GDPR · higiena API · monitoring · SDK</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">9.1</span><span class="out-title">HIPAA · RODO · klucze API</span></div><ul><li>Czego nie możesz dzielić z Claude</li><li>Opcje self-hostingu</li><li>Higiena klucza API</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.2</span><span class="out-title">Bezpieczniejsze prompty budowania</span></div><ul><li>Prompty wyłapujące bugi</li><li>Workflow audytu bezpieczeństwa</li><li>Zanim wypuścisz</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.3</span><span class="out-title">Stack obowiązkowy</span></div><ul><li>RAG · Claude · Antigravity</li><li>Vercel · GitHub</li><li>Co robi każdy element</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.4</span><span class="out-title">Monitoruj na produkcji</span></div><ul><li>Co tak naprawdę śledzić</li><li>Wzorce odzyskiwania błędów</li><li>Uptime + alarmy</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">9.5</span><span class="out-title">SDK + certyfikacja</span></div><ul><li>Podstawy SDK Anthropic</li><li>Ścieżka certyfikacji</li><li>Jak być na bieżąco</li></ul></div>
+</div>
+</section>
+<div class="part-connector" style="--c-from: var(--p9); --c-to: var(--p10);"></div>
+ CZĘŚĆ 10 — PIENIĄDZE 
+<section class="part" id="part-10" style="--c: var(--p10);">
+<div class="part-head">
+<div class="part-num">10</div>
+<div class="part-info">
+<h2>Zamień to na $$$</h2>
+<div class="meta"><strong>4 lekcje</strong> · cenniki · pakiety · propozycje · system Build &amp; Sell</div>
+</div>
+</div>
+<div class="out-grid">
+<div class="out-card"><div class="out-head"><span class="out-num">10.1</span><span class="out-title">Zasady, które oszczędzą 5 lat</span></div><ul><li>Zmiany nastawienia</li><li>Co naprawdę ma znaczenie</li><li>Wzorce, które ukradłbym pierwsze</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.2</span><span class="out-title">Umowy $30K–$50K, zero outboundu</span></div><ul><li>Jak je zdobywam</li><li>Pozycjonowanie, które działa</li><li>System follow-up</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.3</span><span class="out-title">System Build &amp; Sell</span></div><ul><li>Mój właściwy playbook</li><li>Dostarczanie klientowi + fakturowanie Stripe</li><li>Framework cennikowy</li></ul></div>
+<div class="out-card"><div class="out-head"><span class="out-num">10.4</span><span class="out-title">Co dalej</span></div><ul><li>Społeczność Skool</li><li>Tygodniowe live buildy</li><li>Jak ciągle się uczyć</li></ul></div>
+</div>
+</section>
+<!-- BONUS FILES -->
+<!-- STACK GALLERY -->
+<!-- UNLOCK CTA -->
+<!-- COMMUNITY REVIEWS -->
+<!-- FOOTER -->
+</div>
+<span aria-label="Back to top" class="back-top" id="backTop">↑</span>
+<script>
+  // Brand marquee — Simple Icons CDN
+  const BRANDS = [
+    { name: "Claude",      slug: "anthropic",          color: "D97757" },
+    { name: "Hermes-Agent",local: "brands/hermes.png" },
+    { name: "Vercel",      slug: "vercel",             color: "white"  },
+    { name: "Supabase",    slug: "supabase",           color: "3FCF8E" },
+    { name: "Stripe",      slug: "stripe",             color: "635BFF" },
+    { name: "GitHub",      slug: "github",             color: "white"  },
+    { name: "Pinecone",    emoji: "🌲" },
+    { name: "NotebookLM",  emoji: "📔" },
+    { name: "Gmail",       slug: "gmail",              color: "EA4335" },
+    { name: "Notion",      slug: "notion",             color: "white"  },
+    { name: "Figma",       slug: "figma",              color: "F24E1E" },
+    { name: "Google Drive",slug: "googledrive",        color: "4285F4" },
+    { name: "Spline",      slug: "spline",             color: "white"  },
+    { name: "ElevenLabs",  slug: "elevenlabs",         color: "white"  },
+    { name: "Nano Banana", emoji: "🍌" },
+    { name: "Higgsfield",  emoji: "🎬" },
+    { name: "Firecrawl",   emoji: "🔥" },
+    { name: "GoHighLevel", emoji: "🎯" },
+    { name: "Instantly",   emoji: "⚡" },
+    { name: "Granola",     emoji: "🎙" },
+    { name: "Bitwarden",   slug: "bitwarden",          color: "175DDC" },
+    { name: "n8n",         slug: "n8n",                color: "EA4B71" },
+    { name: "LinkedIn",    slug: "linkedin",           color: "0A66C2" },
+    { name: "Apify",       slug: "apify",              color: "FF9013" },
+    { name: "Discord",     slug: "discord",            color: "5865F2" },
+    { name: "PayPal",      slug: "paypal",             color: "003087" },
+    { name: "Calendar",    slug: "googlecalendar",     color: "4285F4" },
+    { name: "YouTube",     slug: "youtube",            color: "FF0000" },
+    { name: "WhatsApp",    slug: "whatsapp",           color: "25D366" },
+    { name: "Zapier",      slug: "zapier",             color: "FF4F00" },
+    { name: "Make",        slug: "make",               color: "6D00CC" },
+    { name: "Netlify",     slug: "netlify",            color: "00C7B7" },
+    { name: "VS Code",     slug: "visualstudiocode",   color: "007ACC" },
+    { name: "Obsidian",    slug: "obsidian",           color: "7C3AED" },
+    { name: "X",           slug: "x",                  color: "white"  }
+  ];
+  function chip(b) {
+    if (b.emoji) return `<span class="brand-chip"><span class="em">${b.emoji}</span>${b.name}</span>`;
+    if (b.local) return `<span class="brand-chip"><img src="${b.local}" alt="${b.name}" loading="lazy" />${b.name}</span>`;
+    return `<span class="brand-chip"><img src="https://cdn.simpleicons.org/${b.slug}/${b.color}" alt="${b.name}" loading="lazy" />${b.name}</span>`;
+  }
+  const m = document.getElementById('marquee');
+  if (m) { const html = BRANDS.map(chip).join(''); m.innerHTML = html + html; }
+
+  // Community reviews — duplicate posts for seamless marquee scroll
+  const skoolFeed = document.querySelector('.skool-feed');
+  if (skoolFeed) { skoolFeed.innerHTML += skoolFeed.innerHTML; }
+
+  // Full stack tile grid
+  const sg = document.getElementById('stack-grid');
+  if (sg) {
+    sg.innerHTML = BRANDS.map(b => {
+      const inner = b.emoji
+        ? `<span class="em">${b.emoji}</span>`
+        : `<img src="https://cdn.simpleicons.org/${b.slug}/${b.color}" alt="${b.name}" loading="lazy" />`;
+      return `<div class="stack-tile" title="${b.name}">${inner}<span class="label">${b.name}</span></div>`;
+    }).join('');
+  }
+
+  // Auto-inject brand logo chips into every lesson card
+  // Keys are matched against card text (case-insensitive, longest first to avoid overlap)
+  // Each tool: prefer Simple Icons (clean monochrome SVG) when slug exists,
+  // else Google favicon by domain (real brand mark), else emoji as last resort.
+  const CARD_KEYWORDS = {
+    "Hermes Agent":  { name: "Hermes-Agent", local: "brands/hermes.png" },
+    "Hermes-Agent":  { name: "Hermes-Agent", local: "brands/hermes.png" },
+    "Hermes agent":  { name: "Hermes-Agent", local: "brands/hermes.png" },
+    "Hermes":        { name: "Hermes-Agent", local: "brands/hermes.png" },
+    "Claude Code":   { name: "Claude Code", slug: "anthropic",        color: "D97757" },
+    "Anthropic SDK": { name: "Anthropic",   slug: "anthropic",        color: "D97757" },
+    "Anthropic":     { name: "Anthropic",   slug: "anthropic",        color: "D97757" },
+    "CLAUDE.md":     { name: "Claude",      slug: "anthropic",        color: "D97757" },
+    "Claude":        { name: "Claude",      slug: "anthropic",        color: "D97757" },
+    "Cowork":        { name: "Cowork",      slug: "anthropic",        color: "D97757" },
+    "Antigravity":   { name: "Antigravity", domain: "antigravity.google" },
+    "VS Code":       { name: "VS Code",     domain: "code.visualstudio.com" },
+    "Vercel":        { name: "Vercel",      slug: "vercel",           color: "white"  },
+    "GitHub":        { name: "GitHub",      slug: "github",           color: "white"  },
+    "Bitwarden":     { name: "Bitwarden",   slug: "bitwarden",        color: "175DDC" },
+    "Supabase":      { name: "Supabase",    slug: "supabase",         color: "3FCF8E" },
+    "Stripe":        { name: "Stripe",      slug: "stripe",           color: "635BFF" },
+    "Pinecone":      { name: "Pinecone",    domain: "pinecone.io" },
+    "NotebookLM":    { name: "NotebookLM",  domain: "notebooklm.google.com" },
+    "Granola":       { name: "Granola",     domain: "granola.so" },
+    "Obsidian":      { name: "Obsidian",    slug: "obsidian",         color: "8B5CF6" },
+    "Gmail":         { name: "Gmail",       slug: "gmail",            color: "EA4335" },
+    "Google Drive":  { name: "Drive",       slug: "googledrive",      color: "4285F4" },
+    "Drive":         { name: "Drive",       slug: "googledrive",      color: "4285F4" },
+    "Notion":        { name: "Notion",      slug: "notion",           color: "white"  },
+    "Figma":         { name: "Figma",       slug: "figma",            color: "F24E1E" },
+    "Stitch":        { name: "Stitch",      domain: "stitch.withgoogle.com" },
+    "Spline":        { name: "Spline",      domain: "spline.design" },
+    "ElevenLabs":    { name: "ElevenLabs",  domain: "elevenlabs.io" },
+    "Higgsfield":    { name: "Higgsfield",  domain: "higgsfield.ai" },
+    "Nano Banana":   { name: "Nano Banana", emoji: "🍌" },
+    "Firecrawl":     { name: "Firecrawl",   domain: "firecrawl.dev" },
+    "Apify":         { name: "Apify",       slug: "apify",            color: "FF9013" },
+    "GHL":           { name: "GoHighLevel", domain: "gohighlevel.com" },
+    "Instantly":     { name: "Instantly",   domain: "instantly.ai" },
+    "n8n":           { name: "n8n",         slug: "n8n",              color: "EA4B71" },
+    "YouTube":       { name: "YouTube",     slug: "youtube",          color: "FF0000" },
+    "Skool":         { name: "Skool",       domain: "skool.com" },
+    "GSAP":          { name: "GSAP",        domain: "gsap.com" },
+    "MCP":           { name: "MCP",         domain: "modelcontextprotocol.io" },
+    "HIPAA":         { name: "HIPAA",       compliance: true },
+    "GDPR":          { name: "GDPR",        compliance: true }
+  };
+
+  const shieldSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+
+  function toolHtml(info) {
+    if (info.compliance) {
+      return `<span class="part-tool compliance" data-name="${info.name}">${shieldSvg}</span>`;
+    }
+    let icon;
+    if (info.emoji) {
+      icon = `<span class="em">${info.emoji}</span>`;
+    } else if (info.local) {
+      icon = `<img src="${info.local}" alt="${info.name}" loading="lazy" />`;
+    } else if (info.domain) {
+      icon = `<img src="https://www.google.com/s2/favicons?domain=${info.domain}&sz=128" alt="${info.name}" loading="lazy" />`;
+    } else {
+      icon = `<img src="https://cdn.simpleicons.org/${info.slug}/${info.color}" alt="${info.name}" loading="lazy" />`;
+    }
+    return `<span class="part-tool" data-name="${info.name}">${icon}</span>`;
+  }
+
+  const KEYWORDS_BY_LENGTH = Object.keys(CARD_KEYWORDS).sort((a, b) => b.length - a.length);
+
+  // Aggregate brand mentions across every card in each part, render on part-head.
+  // Dedupe by visual icon identity so e.g. Cowork + Claude show ONE Anthropic logo.
+  document.querySelectorAll('.part').forEach(part => {
+    let text = (part.textContent || '');
+    const matched = [];
+    const seenIcons = new Set();
+    KEYWORDS_BY_LENGTH.forEach(k => {
+      const re = new RegExp('\\b' + k.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&') + '\\b', 'i');
+      if (re.test(text)) {
+        const info = CARD_KEYWORDS[k];
+        const iconKey = info.compliance ? `c:${info.name}`
+                      : info.slug      ? `s:${info.slug}`
+                      : info.local     ? `l:${info.local}`
+                      : info.domain    ? `d:${info.domain}`
+                      :                  `e:${info.emoji}`;
+        if (!seenIcons.has(iconKey)) {
+          matched.push(info);
+          seenIcons.add(iconKey);
+        }
+        text = text.replace(new RegExp(k, 'gi'), '');
+      }
+    });
+    if (matched.length === 0) return;
+    const head = part.querySelector('.part-head');
+    if (!head) return;
+    // Cap to 6 logos max — Claude always first, then up to 5 others.
+    const claudeMatch = matched.find(m => m.slug === 'anthropic');
+    const others = matched.filter(m => m.slug !== 'anthropic');
+    const capped = (claudeMatch ? [claudeMatch, ...others] : others).slice(0, 6);
+    const tools = document.createElement('div');
+    tools.className = 'part-tools';
+    tools.innerHTML = capped.map(toolHtml).join('');
+    head.appendChild(tools);
+  });
+
+  // Reveal sections on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.part').forEach((s) => io.observe(s));
+
+  // Back to top visibility
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) backTop.classList.add('visible');
+    else backTop.classList.remove('visible');
+  });
+</script>
+</body>
+</html>
