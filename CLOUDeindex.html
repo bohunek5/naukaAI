@@ -1182,6 +1182,121 @@
   .ss-pill .dotmark{ width:7px; height:7px; border-radius:50%; background:currentColor; opacity:0.85; }
   .toc-bar{ top:46px; }
 
+
+  /* ====== Premium Training Modal ====== */
+  .training-modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(7, 8, 16, 0.75);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+  }
+  .training-modal-overlay.active {
+    opacity: 1; pointer-events: auto;
+  }
+  .training-modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    width: 100%; max-width: 680px;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+  }
+  .training-modal-overlay.active .training-modal {
+    transform: translateY(0) scale(1);
+  }
+  .training-modal::-webkit-scrollbar { width: 6px; }
+  .training-modal::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 10px; }
+  
+  .t-modal-header {
+    padding: 32px 40px 24px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+  }
+  .t-modal-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+    color: var(--claude); letter-spacing: 0.1em; text-transform: uppercase;
+    display: inline-block; margin-bottom: 8px;
+    padding: 4px 10px; background: rgba(255,107,53,0.1); border-radius: 6px;
+  }
+  .t-modal-title {
+    font-size: 28px; font-weight: 800; color: var(--text); letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .t-modal-close-icon {
+    position: absolute; top: 24px; right: 24px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--ui-2); border: 1px solid var(--border);
+    color: var(--muted); display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s; font-size: 18px; line-height: 1;
+  }
+  .t-modal-close-icon:hover {
+    background: var(--border-2); color: var(--text); transform: rotate(90deg);
+  }
+  
+  .t-modal-body {
+    padding: 32px 40px;
+  }
+  .t-modal-section { margin-bottom: 32px; }
+  .t-modal-section:last-child { margin-bottom: 0; }
+  .t-modal-section h3 {
+    font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .t-modal-section h3::before {
+    content: ''; display: block; width: 4px; height: 16px; border-radius: 2px;
+    background: var(--claude);
+  }
+  .t-modal-section p {
+    font-size: 15px; color: var(--muted); line-height: 1.6;
+  }
+  
+  .t-checklist { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 12px; }
+  .t-checklist li {
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .t-check-icon {
+    width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;
+    background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3);
+    color: var(--claude); display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: bold; margin-top: 2px;
+  }
+  .t-check-content strong {
+    display: block; font-size: 15px; color: var(--text); font-weight: 600; margin-bottom: 4px;
+  }
+  .t-check-content p {
+    font-size: 13.5px; color: var(--dim); line-height: 1.5; margin: 0;
+  }
+  
+  .t-modal-footer {
+    padding: 24px 40px 32px; border-top: 1px solid var(--border);
+    display: flex; justify-content: flex-end;
+  }
+  .t-btn {
+    padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; border: none;
+  }
+  .t-btn-primary {
+    background: var(--claude); color: #fff;
+    box-shadow: 0 4px 14px rgba(255,107,53,0.3);
+  }
+  .t-btn-primary:hover {
+    background: var(--claude-2); transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+  }
+
+  /* Make cards look clickable */
+  .out-card { cursor: pointer; }
+
 </style>
 <style>
   /* GLOBAL OVERRIDES FOR LEARNING */
