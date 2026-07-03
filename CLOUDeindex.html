@@ -1787,5 +1787,109 @@
   toggle.addEventListener('mouseenter', () => toggle.style.transform = 'scale(1.1)');
   toggle.addEventListener('mouseleave', () => toggle.style.transform = 'scale(1)');
 </script>
+
+<!-- Modal -->
+<div class="training-modal-overlay" id="trainingModal">
+  <div class="training-modal">
+    <div class="t-modal-header">
+      <div class="t-modal-tag" id="modalTag">Rozdział</div>
+      <h2 class="t-modal-title" id="modalTitle">Tytuł Lekcji</h2>
+      <div class="t-modal-close-icon" onclick="closeModal()">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:24px;height:24px;"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+    </div>
+    <div class="t-modal-body">
+      <div class="t-modal-section">
+        <h3>Plan Działania</h3>
+        <p>Szczegółowy proces krok po kroku przygotowany specjalnie dla tej lekcji. Agent poprowadzi Cię przez następujące etapy, gwarantując maksymalne przyswojenie wiedzy.</p>
+        <div style="margin-top:24px; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;" id="modalList">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+      </div>
+      <div class="t-modal-section">
+        <h3>Cel Biznesowy</h3>
+        <p>Opanowanie tych umiejętności pozwoli Ci zaoszczędzić godziny pracy manualnej i wejść na wyższy poziom automatyzacji z wykorzystaniem AI.</p>
+      </div>
+    </div>
+    <div class="t-modal-footer">
+      <div class="btn" style="width: 100%; text-align: center;" onclick="closeModal()">Rozumiem, do dzieła!</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal Logic
+  const modal = document.getElementById('trainingModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalTag = document.getElementById('modalTag');
+  const modalList = document.getElementById('modalList');
+
+  function openModal(num, title, items) {
+    modalTag.textContent = "Lekcja " + num;
+    modalTitle.textContent = title;
+    
+    modalList.innerHTML = '';
+    items.forEach((item, idx) => {
+      const li = document.createElement('li');
+      li.style.display = 'flex';
+      li.style.alignItems = 'flex-start';
+      li.style.gap = '12px';
+      
+      const numBadge = document.createElement('div');
+      numBadge.textContent = idx + 1;
+      numBadge.style.width = '24px';
+      numBadge.style.height = '24px';
+      numBadge.style.borderRadius = '50%';
+      numBadge.style.background = 'var(--brand)';
+      numBadge.style.color = 'var(--bg)';
+      numBadge.style.display = 'flex';
+      numBadge.style.alignItems = 'center';
+      numBadge.style.justifyContent = 'center';
+      numBadge.style.fontSize = '12px';
+      numBadge.style.fontWeight = 'bold';
+      numBadge.style.flexShrink = '0';
+      
+      const text = document.createElement('span');
+      text.textContent = item;
+      text.style.color = 'var(--text-dim)';
+      text.style.lineHeight = '1.5';
+      
+      li.appendChild(numBadge);
+      li.appendChild(text);
+      modalList.appendChild(li);
+    });
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Attach click events to all cards
+  document.querySelectorAll('.out-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      const numEl = card.querySelector('.out-num');
+      const titleEl = card.querySelector('.out-title');
+      const listItems = card.querySelectorAll('ul li');
+      
+      const num = numEl ? numEl.textContent.trim() : '';
+      const title = titleEl ? titleEl.textContent.trim() : 'Szczegóły modułu';
+      const items = Array.from(listItems).map(li => li.textContent.trim());
+      
+      openModal(num, title, items);
+    });
+  });
+</script>
+
 </body>
 </html>
