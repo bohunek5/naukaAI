@@ -288,8 +288,29 @@
   }
   .part-tool:hover::after { opacity: 1; }
   @media (max-width: 720px) {
-    .part-head { flex-wrap: wrap; }
-    .part-tools { max-width: 100%; justify-content: flex-start; margin-top: 8px; }
+    .part-head { 
+      flex-direction: column; 
+      align-items: flex-start; 
+      gap: 12px; 
+      padding: 20px;
+    }
+    .part-num {
+      min-width: auto;
+      margin-bottom: -4px;
+    }
+    .part-info {
+      width: 100%;
+    }
+    .part-info .meta {
+      font-size: 13px !important;
+      line-height: 1.4 !important;
+    }
+    .part-tools { 
+      max-width: 100%; 
+      justify-content: flex-start; 
+      margin-top: 4px; 
+      flex-wrap: wrap;
+    }
   }
   .part-info h2 {
     font-size: clamp(22px, 2.6vw, 30px);
