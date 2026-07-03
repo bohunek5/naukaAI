@@ -143,7 +143,7 @@
   /* TOC sticky nav */
   .toc-bar {
     position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    background: rgba(7, 8, 16, 0.85);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -1297,6 +1297,9 @@
   /* Make cards look clickable */
   .out-card { cursor: pointer; }
 
+  body.light-mode .toc-bar {
+    background: rgba(248, 250, 252, 0.85);
+  }
 </style>
 <style>
   /* GLOBAL OVERRIDES FOR LEARNING */
